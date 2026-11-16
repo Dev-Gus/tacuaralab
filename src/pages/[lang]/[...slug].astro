@@ -1,0 +1,20 @@
+---
+import { languages, pageIds, pages, ui, type Language, type PageId } from '../../lib/pages';
+export function getStaticPaths() {
+  return languages.flatMap((lang) => pageIds.map((page) => ({
+    params: { lang, slug: pages[lang][page].slug || undefined },
+    props: { lang, page },
+  })));
+}
+interface Props { lang: Language; page: PageId }
+const { lang, page } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pages[lang][page].title} | Tacuara Lab</title>
+  </head>
+  <body><main><h1>{pages[lang][page].title}</h1><p>{ui[lang].placeholder}</p></main></body>
+</html>
