@@ -26,10 +26,10 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 ## Status
 - [x] Task 1: Astro + Tailwind foundation configured with strict TypeScript and static output; old skeleton removed. No React.
 - [x] Task 2: Five placeholder pages per language, localized real routes, and root redirect.
-- [x] Task 3: Reusable color, spacing, system font, button, and card tokens. Palette proposed in DESIGN.md; owner approval pending.
+- [x] Task 3: Reusable color, spacing, system font, button, and card tokens. Palette approved by owner; see DESIGN.md.
 - [x] Task 4: Shared header/footer, mobile-first visible navigation, active states, skip link, and plain same-page language links.
 - [x] Task 5: Cloudflare Pages static build ready; command `npm run build`, output `dist`, Node 24.22.1. Settings documented in README.md. No deployment or push performed.
-- [x] Phase 1: foundation (setup, design system, layout, deploy readiness). Build passes; Astro check reports zero errors/warnings; all ten localized routes return HTTP 200 with correct language and no client scripts. Root redirect output and same-page language navigation verified. Palette approval pending; see DESIGN.md.
+- [x] Phase 1: foundation (setup, design system, layout, deploy readiness). Build passes; Astro check reports zero errors/warnings; all ten localized routes return HTTP 200 with correct language and no client scripts. Root redirect output and same-page language navigation verified. Palette approved; see DESIGN.md.
 - [ ] Phase 2: content and trust (About, services, pricing, case study template)
 - [ ] Phase 3: features (form, WhatsApp, estimator, ES/EN, SEO, analytics)
 - [ ] Phase 4: launch checklist

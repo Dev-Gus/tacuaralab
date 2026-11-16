@@ -1,6 +1,6 @@
 # Phase 1 design system
 
-Proposed palette — pending owner approval. Warm ivory and bamboo green connect
+Approved palette. Warm ivory and bamboo green connect
 the name to a grounded, natural visual direction; charcoal keeps the interface clear.
 
 - Paper: `#F6F4ED` — page background.
