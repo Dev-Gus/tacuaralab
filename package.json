@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=24.22.1 <25" },
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "@emnapi/core": "^1.11.3",
     "typescript": "^6.0.3"
   }
 }
