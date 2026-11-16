@@ -1,0 +1,48 @@
+---
+import { pageIds, pages, pageUrl, ui, type Language, type PageId } from '../lib/pages';
+import '../styles/global.css';
+
+interface Props { lang: Language; page: PageId }
+const { lang, page } = Astro.props;
+const otherLang = lang === 'es' ? 'en' : 'es';
+const text = ui[lang];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pages[lang][page].title} | Tacuara Lab</title>
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a class="skip-link" href="#content">{text.skip}</a>
+    <header class="border-b border-line py-6">
+      <div class="container flex flex-wrap items-center justify-between gap-4">
+        <a class="text-xl font-semibold tracking-tight no-underline" href={pageUrl(lang, 'home')}>Tacuara Lab<span class="text-bamboo" aria-hidden="true">.</span></a>
+        <a
+          class="inline-flex min-h-11 items-center rounded-lg border border-bamboo px-4 text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
+          href={pageUrl(otherLang, page)}
+          lang={otherLang}
+          hreflang={otherLang}
+          aria-label={text.switchLanguage}
+        >{otherLang === 'es' ? 'Español' : 'English'} <span class="ml-2" aria-hidden="true">↗</span></a>
+        <nav class="w-full lg:w-auto" aria-label={text.navigation}>
+          <ul class="flex flex-wrap gap-1">
+            {pageIds.map((id) => (
+              <li><a class="nav-link" href={pageUrl(lang, id)} aria-current={id === page ? 'page' : undefined}>{pages[lang][id].title}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="content" tabindex="-1" class="container flex-1 py-16 sm:py-24">
+      <slot />
+    </main>
+    <footer class="border-t border-line py-8">
+      <div class="container flex flex-wrap items-center justify-between gap-4 text-sm">
+        <p class="font-semibold">© {new Date().getUTCFullYear()} Tacuara Lab</p>
+        <p class="text-muted">{text.footer}</p>
+      </div>
+    </footer>
+  </body>
+</html>

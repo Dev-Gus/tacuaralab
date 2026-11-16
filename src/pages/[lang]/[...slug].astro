@@ -1,20 +1,29 @@
 ---
 import { languages, pageIds, pages, ui, type Language, type PageId } from '../../lib/pages';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageUrl } from '../../lib/pages';
+
 export function getStaticPaths() {
-  return languages.flatMap((lang) => pageIds.map((page) => ({
-    params: { lang, slug: pages[lang][page].slug || undefined },
-    props: { lang, page },
-  })));
+  return languages.flatMap((lang) =>
+    pageIds.map((page) => ({
+      params: { lang, slug: pages[lang][page].slug || undefined },
+      props: { lang, page },
+    })),
+  );
 }
+
 interface Props { lang: Language; page: PageId }
 const { lang, page } = Astro.props;
 ---
-<!doctype html>
-<html lang={lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pages[lang][page].title} | Tacuara Lab</title>
-  </head>
-  <body><main><h1>{pages[lang][page].title}</h1><p>{ui[lang].placeholder}</p></main></body>
-</html>
+<BaseLayout lang={lang} page={page}>
+  <div class="max-w-3xl">
+    <p class="mb-6 text-sm font-semibold uppercase tracking-widest text-bamboo">Tacuara Lab / {lang.toUpperCase()}</p>
+    <h1>{pages[lang][page].title}</h1>
+    <p class="mt-6 text-xl text-muted">{ui[lang].placeholder}</p>
+  </div>
+  <section class="card mt-12 max-w-3xl" aria-labelledby="placeholder-heading">
+    <h2 id="placeholder-heading">{ui[lang].section}</h2>
+    <p class="mt-4 text-muted">{ui[lang].placeholder}</p>
+    <a class="button button-secondary mt-8" href={pageUrl(lang, 'home')}>{ui[lang].backHome}</a>
+  </section>
+</BaseLayout>

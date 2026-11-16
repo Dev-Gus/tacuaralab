@@ -27,6 +27,7 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - [x] Task 1: Astro + Tailwind foundation configured with strict TypeScript and static output; old skeleton removed. No React.
 - [x] Task 2: Five placeholder pages per language, localized real routes, and root redirect.
 - [x] Task 3: Reusable color, spacing, system font, button, and card tokens. Palette proposed in DESIGN.md; owner approval pending.
+- [x] Task 4: Shared header/footer, mobile-first visible navigation, active states, skip link, and plain same-page language links.
 - [ ] Phase 1: foundation (setup, design system, layout, deploy)
 - [ ] Phase 2: content and trust (About, services, pricing, case study template)
 - [ ] Phase 3: features (form, WhatsApp, estimator, ES/EN, SEO, analytics)
