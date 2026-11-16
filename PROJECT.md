@@ -24,6 +24,7 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - Privacy-friendly analytics
 
 ## Status
+- [x] Task 1: Astro + Tailwind foundation configured with strict TypeScript and static output; old skeleton removed. No React.
 - [ ] Phase 1: foundation (setup, design system, layout, deploy)
 - [ ] Phase 2: content and trust (About, services, pricing, case study template)
 - [ ] Phase 3: features (form, WhatsApp, estimator, ES/EN, SEO, analytics)
