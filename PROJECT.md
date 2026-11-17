@@ -24,6 +24,12 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - Privacy-friendly analytics
 
 ## Status
+- Decisions (Phase 2)
+  - Services: two fixed packages plus one by-quote option. **Presencia** is one page with about, services, hours, map, WhatsApp button, mobile-first layout, and basic Google visibility. **Sitio completo** is up to about five pages with the above plus a contact form, more pages, and optional ES/EN. **A medida** has no listed price and is quoted per project.
+  - Launch pricing is shown as a discount with regular and launch prices side by side, only when the regular price is real. Offer it to the first five clients in exchange for a testimonial and permission to include the work in the portfolio. No live counter.
+  - Show prices in USD on the site; a FAQ line will say payment is in pesos at the exchange rate on the day of payment. Do not show peso prices. Each package states inclusions, revisions, delivery time, and who pays for the domain and hosting. Show optional monthly maintenance as a separate line.
+  - Current estimates (US$250–350 for one page; US$450–600 for multiple pages) are unverified placeholders.
+  - Open items for an accountant: which exchange rate applies, whether prices include taxes, and how to invoice.
 - [x] Lighthouse mobile after housekeeping: Performance 100, Accessibility 100, Best Practices 100, SEO 100.
 - [x] Cleanup: removed the header brand period and relaxed the Node engine requirement to >=22.23.4; deployment Node pin remains 24.22.1.
 - [x] Task 1: Astro + Tailwind foundation configured with strict TypeScript and static output; old skeleton removed. No React.
