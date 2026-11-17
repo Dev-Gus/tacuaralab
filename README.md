@@ -26,25 +26,30 @@ Astro's checker on Windows.
 - Spanish: `/es`, `/es/proyectos`, `/es/servicios`, `/es/sobre`, `/es/contacto`.
 - English: `/en`, `/en/projects`, `/en/services`, `/en/about`, `/en/contact`.
 - `/` redirects to `/es`. Astro emits an HTML redirect for local static previews;
-  Cloudflare Pages uses `public/_redirects` for an HTTP 302.
+  Cloudflare Workers static assets use `public/_redirects` for an HTTP 302.
 - Every language link points to the matching page using `src/lib/pages.ts`.
 
-## Cloudflare Pages settings
+## Cloudflare Workers static assets
 
-- Framework preset: Astro.
 - Root directory: repository root.
-- Install dependencies: `npm ci` (or Pages' automatic npm installation).
+- Install dependencies: `npm ci`.
 - Build command: **`npm run build`**.
+- Deploy command: **`npx wrangler deploy`**.
 - Build output directory: **`dist`**.
 - Build environment: **`NODE_VERSION=24.22.1`**, also pinned in `.node-version`.
-- Static output: no Cloudflare adapter, Worker, bindings, or secrets required.
+- Static output: no Cloudflare adapter, Worker script, or bindings required.
 
-`public/_redirects` is copied to `dist/_redirects`. A minimal `404.html`
-prevents Pages' default SPA fallback for unknown URLs.
+The root `wrangler.jsonc` configures the `tacuara-lab` Worker with compatibility
+date `2026-11-17` and `assets.directory` set to `./dist`. It has no `main`
+entry point: Cloudflare serves the static build directly. See the
+[Workers static assets documentation](https://developers.cloudflare.com/workers/static-assets/).
 
-No deployment or Git push is part of this task. Keep the live site's production
-branch on `main`. If reviewing on Pages, use an isolated preview deployment for
-`astro-rebuild`; do not change the production branch or attach a live domain.
+`public/_redirects` is copied to `dist/_redirects`. Astro generates `dist/404.html`
+from `src/pages/404.astro`; `assets.not_found_handling` is set to `404-page` so
+unknown URLs return that page with HTTP 404.
+
+Run the build command before deploying. For Git-connected Workers builds, select
+`astro-rebuild` and use the build and deploy commands above.
 
 ## Design and scope
 
