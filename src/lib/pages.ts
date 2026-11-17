@@ -5,24 +5,24 @@ export type PageId = (typeof pageIds)[number];
 
 export const pages = {
   es: {
-    home: { slug: '', title: 'Inicio' },
-    projects: { slug: 'proyectos', title: 'Proyectos' },
-    services: { slug: 'servicios', title: 'Servicios' },
-    about: { slug: 'sobre', title: 'Acerca de' },
-    contact: { slug: 'contacto', title: 'Contacto' },
+    home: { slug: '', title: 'Inicio', description: 'Sitio de ejemplo de Tacuara Lab, estudio web en Uruguay.' },
+    projects: { slug: 'proyectos', title: 'Proyectos', description: 'Proyectos de ejemplo de diseño web en Uruguay.' },
+    services: { slug: 'servicios', title: 'Servicios', description: 'Servicios de ejemplo para sitios web en Uruguay.' },
+    about: { slug: 'sobre', title: 'Acerca de', description: 'Conocé más sobre Tacuara Lab en Uruguay.' },
+    contact: { slug: 'contacto', title: 'Contacto', description: 'Contactá a Tacuara Lab desde Uruguay.' },
   },
   en: {
-    home: { slug: '', title: 'Home' },
-    projects: { slug: 'projects', title: 'Projects' },
-    services: { slug: 'services', title: 'Services' },
-    about: { slug: 'about', title: 'About' },
-    contact: { slug: 'contact', title: 'Contact' },
+    home: { slug: '', title: 'Home', description: 'A sample website from Tacuara Lab, a web studio in Uruguay.' },
+    projects: { slug: 'projects', title: 'Projects', description: 'Sample web design projects from Uruguay.' },
+    services: { slug: 'services', title: 'Services', description: 'Sample website services for businesses in Uruguay.' },
+    about: { slug: 'about', title: 'About', description: 'Learn about Tacuara Lab, based in Uruguay.' },
+    contact: { slug: 'contact', title: 'Contact', description: 'Contact Tacuara Lab in Uruguay.' },
   },
-} satisfies Record<Language, Record<PageId, { slug: string; title: string }>>;
+} satisfies Record<Language, Record<PageId, { slug: string; title: string; description: string }>>;
 
 export function pageUrl(lang: Language, page: PageId): string {
   const slug = pages[lang][page].slug;
-  return `/${lang}${slug ? `/${slug}` : ''}`;
+  return `/${lang}${slug ? `/${slug}` : '/'}${slug ? '/' : ''}`;
 }
 
 export const ui = {

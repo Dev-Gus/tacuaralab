@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  redirects: { '/': '/es' },
+  trailingSlash: 'always',
+  redirects: { '/': '/es/' },
   vite: { plugins: [tailwindcss()] },
 });

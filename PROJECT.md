@@ -29,6 +29,7 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - [x] Task 3: Reusable color, spacing, system font, button, and card tokens. Palette approved by owner; see DESIGN.md.
 - [x] Task 4: Shared header/footer, mobile-first visible navigation, active states, skip link, and plain same-page language links.
 - [x] Task 5: Cloudflare Workers static assets configured in `wrangler.jsonc` (no Worker script); build `npm run build`, deploy `npx wrangler deploy`, output `dist`, Node 24.22.1. Custom 404 handling enabled. Settings documented in README.md; build verified on 2026-11-17.
+- [x] Preview: https://tacuara-lab.tacuaralab.workers.dev. Lighthouse mobile baseline before housekeeping: Performance 100, Accessibility 100, Best Practices 96, SEO 91.
 - [x] Phase 1: foundation (setup, design system, layout, deploy readiness). Build passes; Astro check reports zero errors/warnings; all ten localized routes return HTTP 200 with correct language and no client scripts. Root redirect output and same-page language navigation verified. Palette approved; see DESIGN.md.
 - [ ] Phase 2: content and trust (About, services, pricing, case study template)
 - [ ] Phase 3: features (form, WhatsApp, estimator, ES/EN, SEO, analytics)

@@ -15,7 +15,7 @@ export function getStaticPaths() {
 interface Props { lang: Language; page: PageId }
 const { lang, page } = Astro.props;
 ---
-<BaseLayout lang={lang} page={page}>
+<BaseLayout lang={lang} page={page} description={pages[lang][page].description}>
   <div class="max-w-3xl">
     <p class="mb-6 text-sm font-semibold uppercase tracking-widest text-bamboo">Tacuara Lab / {lang.toUpperCase()}</p>
     <h1>{pages[lang][page].title}</h1>
