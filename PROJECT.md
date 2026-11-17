@@ -24,6 +24,8 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - Privacy-friendly analytics
 
 ## Status
+- [x] Lighthouse mobile after housekeeping: Performance 100, Accessibility 100, Best Practices 100, SEO 100.
+- [x] Cleanup: removed the header brand period and relaxed the Node engine requirement to >=22.23.4; deployment Node pin remains 24.22.1.
 - [x] Task 1: Astro + Tailwind foundation configured with strict TypeScript and static output; old skeleton removed. No React.
 - [x] Task 2: Five placeholder pages per language, localized real routes, and root redirect.
 - [x] Task 3: Reusable color, spacing, system font, button, and card tokens. Palette approved by owner; see DESIGN.md.
