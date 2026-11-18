@@ -2,8 +2,8 @@
 import { pageIds, pages, pageUrl, ui, type Language, type PageId } from '../lib/pages';
 import '../styles/global.css';
 
-interface Props { lang: Language; page: PageId; description: string }
-const { lang, page, description } = Astro.props;
+interface Props { lang: Language; page: PageId; description: string; title?: string }
+const { lang, page, description, title } = Astro.props;
 const otherLang = lang === 'es' ? 'en' : 'es';
 const text = ui[lang];
 ---
@@ -14,7 +14,7 @@ const text = ui[lang];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{pages[lang][page].title} | Tacuara Lab</title>
+    <title>{title ?? `${pages[lang][page].title} | Tacuara Lab`}</title>
   </head>
   <body class="flex min-h-screen flex-col">
     <a class="skip-link" href="#content">{text.skip}</a>
