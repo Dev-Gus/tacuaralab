@@ -25,11 +25,17 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 
 ## Status
 - Decisions (Phase 2)
-  - Services: two fixed packages plus one by-quote option. **Presencia** is one page with about, services, hours, map, WhatsApp button, mobile-first layout, and basic Google visibility. **Sitio completo** is up to about five pages with the above plus a contact form, more pages, and optional ES/EN. **A medida** has no listed price and is quoted per project.
-  - Launch pricing is shown as a discount with regular and launch prices side by side, only when the regular price is real. Offer it to the first five clients in exchange for a testimonial and permission to include the work in the portfolio. No live counter.
-  - Show prices in USD on the site; a FAQ line will say payment is in pesos at the exchange rate on the day of payment. Do not show peso prices. Each package states inclusions, revisions, delivery time, and who pays for the domain and hosting. Show optional monthly maintenance as a separate line.
-  - Current estimates (US$250–350 for one page; US$450–600 for multiple pages) are unverified placeholders.
-  - Open items for an accountant: which exchange rate applies, whether prices include taxes, and how to invoice.
+  - Services: two fixed packages plus one by-quote option. Presencia (1 page) and Sitio completo (up to 5 pages). A medida has no listed price and is quoted per project.
+  - Presencia: list US$250 / launch US$200. 1 page (about, services, hours, map), WhatsApp + tap-to-call buttons, 2 revision rounds, 30 days support, 7 business days, Spanish only, no contact form.
+  - Sitio completo: list US$450 / launch US$350. Everything in Presencia plus up to 5 pages, contact form, Google Business Profile guide, optional ES/EN version (same pages translated, no new content), 3 revision rounds, 60 days support, 15 business days.
+  - Both include: custom mobile-first design, text wordmark (full logo quoted separately), copy written from a short interview, .com domain and hosting included the first year (domain in the client's name; .com.uy passed at cost, verify), email forwarding, SEO basics + local business markup + social preview image, basic privacy-friendly analytics.
+  - Extras: simple extra page US$50. Optional maintenance US$15/month or US$150/year (about 2 small edits per month), shown as a separate line.
+  - Launch pricing: shown as regular vs launch price side by side. First 5 clients, in exchange for a testimonial and permission to show the work in the portfolio. No live counter. List prices are unverified until real clients pay them; review after client #5.
+  - Terms: 50% to start / 50% on delivery. Client owns domain and content; files handed over on request. Small "Sitio por Tacuara Lab" footer credit. Timelines start when the client sends the requested material.
+  - Not included: logo design, long-form copy, professional photography, store/booking/logins (A medida), social media/ads, mailbox hosting, English version in Presencia, redesign after approval, ranking guarantees.
+  - Prices shown in USD only; FAQ says payment is in pesos at the exchange rate on the day of payment. Do not show peso prices.
+  - Open items: the owner is not registered yet and needs an accountant before the first payment (registration, whether prices include IVA, which exchange rate applies, how to invoice a 50/50 payment). Niche is undecided. The pricing page must NOT state anything about IVA/taxes until the accountant answers, and must not go live (Phase 4) until this is resolved.
+  - Phase 3 to-do: build and test a reusable client contact form template before client #1.
 - [x] Lighthouse mobile after housekeeping: Performance 100, Accessibility 100, Best Practices 100, SEO 100.
 - [x] Cleanup: removed the header brand period and relaxed the Node engine requirement to >=22.23.4; deployment Node pin remains 24.22.1.
 - [x] Task 1: Astro + Tailwind foundation configured with strict TypeScript and static output; old skeleton removed. No React.
