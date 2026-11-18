@@ -46,6 +46,7 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - [x] Preview: https://tacuara-lab.tacuaralab.workers.dev. Lighthouse mobile baseline before housekeeping: Performance 100, Accessibility 100, Best Practices 96, SEO 91.
 - [x] Phase 1: foundation (setup, design system, layout, deploy readiness). Build passes; Astro check reports zero errors/warnings; all ten localized routes return HTTP 200 with correct language and no client scripts. Root redirect output and same-page language navigation verified. Palette approved; see DESIGN.md.
 - [ ] Phase 2: content and trust (About, services, pricing, case study template)
+- [x] Phase 2: Services and pricing page (ES/EN). Verified with `npm ci`, `npm run build`, and `npx astro check` (zero errors/warnings); both routes return HTTP 200, language links point to each other, and rendered pages have no client scripts, peso prices, IVA/tax mentions, incorrect brand spelling, or placeholder text.
 - [ ] Phase 3: features (form, WhatsApp, estimator, ES/EN, SEO, analytics)
 - [ ] Phase 4: launch checklist
 
