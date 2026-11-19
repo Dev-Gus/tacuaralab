@@ -48,6 +48,7 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - [x] Phase 1: foundation (setup, design system, layout, deploy readiness). Build passes; Astro check reports zero errors/warnings; all ten localized routes return HTTP 200 with correct language and no client scripts. Root redirect output and same-page language navigation verified. Palette approved; see DESIGN.md.
 - [ ] Phase 2: content and trust (About, services, pricing, case study template)
 - [x] Phase 2: Services and pricing page (ES/EN). Verified with `npm ci`, `npm run build`, and `npx astro check` (zero errors/warnings); both routes return HTTP 200, language links point to each other, and rendered pages have no client scripts, peso prices, IVA/tax mentions, incorrect brand spelling, or placeholder text.
+- [x] English package names: Presence / Full site / Custom. Verified with `npm ci`, `npm run build`, and `npx astro check` (zero errors); both service routes return HTTP 200, no Spanish package names appear on `/en/services/`, and the Spanish source remains unchanged.
 - [ ] Phase 3: features (form, WhatsApp, estimator, ES/EN, SEO, analytics)
 - [ ] Phase 4: launch checklist
 
