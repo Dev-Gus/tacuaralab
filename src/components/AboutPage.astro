@@ -1,0 +1,36 @@
+---
+import { about } from '../lib/about';
+import type { Language } from '../lib/pages';
+
+interface Props {
+  lang: Language;
+  whatsappUrl: string;
+  photo?: { src: string; alt: string; width: number; height: number };
+}
+const { lang, whatsappUrl, photo } = Astro.props;
+const text = about[lang];
+---
+<div class:list={['flex flex-col gap-8 lg:items-center lg:gap-16', photo && 'lg:flex-row']}>
+  {photo && (
+    <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height}
+      class="w-full max-w-sm rounded-card object-cover lg:w-1/3" />
+  )}
+  <div class="max-w-3xl">
+    <h1>{text.heading}</h1>
+    {text.intro.map((paragraph) => <p class="mt-6 text-xl text-muted">{paragraph}</p>)}
+  </div>
+</div>
+<section class="mt-16 max-w-3xl" aria-labelledby="name-heading">
+  <h2 id="name-heading">{text.nameHeading}</h2>
+  <p class="mt-4">{text.name}</p>
+</section>
+<section class="card mt-16 max-w-3xl" aria-labelledby="work-heading">
+  <h2 id="work-heading">{text.workHeading}</h2>
+  <ul class="mt-6 list-disc space-y-2 pl-5">
+    {text.work.map((item) => <li>{item}</li>)}
+  </ul>
+</section>
+<div class="mt-12 max-w-3xl">
+  <p class="text-xl">{text.closing}</p>
+  <a class="button mt-6" href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.button}</a>
+</div>

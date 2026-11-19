@@ -1,6 +1,8 @@
 ---
 import { languages, pageIds, pages, ui, type Language, type PageId } from '../../lib/pages';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AboutPage from '../../components/AboutPage.astro';
+import { about } from '../../lib/about';
 import { pageUrl } from '../../lib/pages';
 
 export function getStaticPaths() {
@@ -19,12 +21,12 @@ const title = isServices
   ? lang === 'es'
     ? 'Servicios y precios de páginas web en Uruguay | Tacuara Lab'
     : 'Website services and pricing in Uruguay | Tacuara Lab'
-  : undefined;
-const description = pages[lang][page].description;
+  : page === 'about' ? about[lang].title : undefined;
+const description = page === 'about' ? about[lang].description : pages[lang][page].description;
 const wa = (message: string) => `https://wa.me/59898871858?text=${encodeURIComponent(message)}`;
 ---
 <BaseLayout lang={lang} page={page} description={description} title={title}>
-  {isServices ? (
+  {page === 'about' ? <AboutPage lang={lang} whatsappUrl={wa(about[lang].message)} /> : isServices ? (
     lang === 'es' ? (
       <>
         <div class="max-w-3xl">
