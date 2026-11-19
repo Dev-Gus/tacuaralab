@@ -26,6 +26,7 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 ## Status
 - Decisions (Phase 2)
   - Services: two fixed packages plus one by-quote option. Presencia (1 page) and Sitio completo (up to 5 pages). A medida has no listed price and is quoted per project.
+  - English package names are Presence / Full site / Custom; Spanish names stay Presencia / Sitio completo / A medida.
   - Presencia: list US$250 / launch US$200. 1 page (about, services, hours, map), WhatsApp + tap-to-call buttons, 2 revision rounds, 30 days support, 7 business days, Spanish only, no contact form.
   - Sitio completo: list US$450 / launch US$350. Everything in Presencia plus up to 5 pages, contact form, Google Business Profile guide, optional ES/EN version (same pages translated, no new content), 3 revision rounds, 60 days support, 15 business days.
   - Both include: custom mobile-first design, text wordmark (full logo quoted separately), copy written from a short interview, .com domain and hosting included the first year (domain in the client's name; .com.uy passed at cost, verify), email forwarding, SEO basics + local business markup + social preview image, basic privacy-friendly analytics.
