@@ -10,6 +10,36 @@
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --spacing: 0.25rem;
   --radius-card: 1rem;
+  --text-home-heading: clamp(2rem, 4vw, 3rem);
+  --spacing-home-section: clamp(4rem, 8vw, 6rem);
+  --shadow-home-card: 0 8px 24px color-mix(in srgb, var(--color-ink) 5%, transparent);
+}
+
+@layer components {
+  .home h2 { font-size: var(--text-home-heading); text-wrap: balance; }
+  .home h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+  .home-hero h1 { max-width: 16ch; text-wrap: balance; }
+  .home-hero-detail { max-width: 38rem; margin-top: 2rem; }
+  .home-trust { display: grid; gap: 1.5rem; margin-top: 4rem; padding-block: 2rem; border-block: 1px solid var(--color-line); }
+  .home-trust li { border-left: 2px solid var(--color-bamboo); padding-left: 1rem; font-size: 0.875rem; font-weight: 600; }
+  .home-section { margin-top: var(--spacing-home-section); }
+  .home-card { box-shadow: var(--shadow-home-card); }
+  .home-layer { padding: 2rem 1rem; border-radius: var(--radius-card); background: linear-gradient(135deg, var(--color-surface), var(--color-paper)); border: 1px solid var(--color-line); }
+  .home-package { display: block; text-decoration: none; border-top: 3px solid var(--color-bamboo); }
+  .home-package:hover { border-color: var(--color-bamboo); background: var(--color-paper); }
+  .home-step { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; background: var(--color-bamboo); color: var(--color-surface); font-weight: 600; }
+  .home-proof { display: grid; gap: 2rem; padding-block: 3rem; border-block: 1px solid var(--color-line); }
+  .home-closing { margin-top: var(--spacing-home-section); padding-block: 3rem; text-align: center; background: linear-gradient(160deg, var(--color-surface), var(--color-paper)); box-shadow: var(--shadow-home-card); }
+  .home-closing h2 { max-width: 24ch; margin-inline: auto; }
+  @media (min-width: 48rem) {
+    .home-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .home-layer { padding: 3rem; }
+    .home-proof { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  }
+  @media (min-width: 64rem) {
+    .home-hero { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 3rem; }
+    .home-hero-detail { margin-top: 0; }
+  }
 }
 
 @layer base {

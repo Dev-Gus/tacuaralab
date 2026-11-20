@@ -26,3 +26,14 @@ Reusable classes in `src/styles/global.css`:
 
 Keyboard focus is visible. Navigation wraps on small screens and stays visible
 without scripts or a menu toggle. No custom animations or transitions.
+
+## Home composition
+
+Home reuses the existing container, buttons, cards, palette and H1 scale.
+Home-only tokens: `--text-home-heading` (H2, 2–3rem fluid),
+`--spacing-home-section` (4–6rem fluid), and `--shadow-home-card`
+(0 8px 24px, approved Ink at 5% opacity). Card headings are 1.25rem.
+Layered sections blend Surface and Paper; no additional colors are introduced.
+Layouts use one column on mobile, expanding at 48rem and 64rem.
+Hover states change approved colors without transitions, movement or animation;
+content remains fully visible with reduced motion or JavaScript disabled.
