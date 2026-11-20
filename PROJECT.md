@@ -35,7 +35,12 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
   - Terms: 50% to start / 50% on delivery. Client owns domain and content; files handed over on request. Small "Sitio por Tacuara Lab" footer credit. Timelines start when the client sends the requested material.
   - Not included: logo design, long-form copy, professional photography, store/booking/logins (A medida), social media/ads, mailbox hosting, English version in Presencia, redesign after approval, ranking guarantees.
   - Prices shown in USD only; FAQ says payment is in pesos at the exchange rate on the day of payment. Do not show peso prices.
-  - Open items: the owner is not registered yet and needs an accountant before the first payment (registration, whether prices include IVA, which exchange rate applies, how to invoice a 50/50 payment). Niche is undecided. The pricing page must NOT state anything about IVA/taxes until the accountant answers, and must not go live (Phase 4) until this is resolved.
+  - Niche (leaning, not final): private dental and physio practices in Tacuarembó. Top prospects to contact first: four businesses chosen from a local scan.
+  - Offer: keep launch prices US$200 (Presencia) and US$350 (Sitio completo); list US$250 / US$450. First 5 clients get launch price in exchange for a testimonial and portfolio permission.
+  - Sales approach: a custom mockup of the prospect's site is shown before they pay, only after they reply to a first message.
+  - Case study: no fake client projects. The Projects page shows the Tacuara Lab site as an honest self-project plus a block inviting the first client. Lighthouse numbers are re-checked on the final domain before being quoted.
+  - Order of work: finish Phase 2 (photo, case study, layout check), then build one reusable dental/physio template, then mockups and outreach, then Phase 3, then Phase 4 after the accountant answers.
+  - Open items: the owner is not registered yet and needs an accountant before the first payment (registration, whether prices include IVA, which exchange rate applies, how to invoice a 50/50 payment). The pricing page must NOT state anything about IVA/taxes until the accountant answers, and must not go live (Phase 4) until this is resolved.
   - Phase 3 to-do: build and test a reusable client contact form template before client #1.
 - [x] Lighthouse mobile after housekeeping: Performance 100, Accessibility 100, Best Practices 100, SEO 100.
 - [x] Cleanup: removed the header brand period and relaxed the Node engine requirement to >=22.23.4; deployment Node pin remains 24.22.1.
