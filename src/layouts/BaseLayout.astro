@@ -2,10 +2,12 @@
 import { pageIds, pages, pageUrl, ui, type Language, type PageId } from '../lib/pages';
 import '../styles/global.css';
 
-interface Props { lang: Language; page: PageId; description: string; title?: string }
-const { lang, page, description, title } = Astro.props;
+interface Props { lang: Language; page: PageId; description: string; title?: string; localizedPaths?: Record<Language, string> }
+const { lang, page, description, title, localizedPaths } = Astro.props;
 const otherLang = lang === 'es' ? 'en' : 'es';
 const text = ui[lang];
+const paths = localizedPaths ?? { es: pageUrl('es', page), en: pageUrl('en', page) };
+const absoluteUrl = (path: string) => new URL(path, 'https://tacuaralab.com').href;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -13,6 +15,9 @@ const text = ui[lang];
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={absoluteUrl(paths[lang])} />
+    <link rel="alternate" hreflang="es" href={absoluteUrl(paths.es)} />
+    <link rel="alternate" hreflang="en" href={absoluteUrl(paths.en)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title ?? `${pages[lang][page].title} | Tacuara Lab`}</title>
   </head>
@@ -23,7 +28,7 @@ const text = ui[lang];
         <a class="text-xl font-semibold tracking-tight no-underline" href={pageUrl(lang, 'home')}>Tacuara Lab</a>
         <a
           class="inline-flex min-h-11 items-center rounded-lg border border-bamboo px-4 text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
-          href={pageUrl(otherLang, page)}
+          href={paths[otherLang]}
           lang={otherLang}
           hreflang={otherLang}
           aria-label={text.switchLanguage}

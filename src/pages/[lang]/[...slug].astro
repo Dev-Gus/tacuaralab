@@ -4,29 +4,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AboutPage from '../../components/AboutPage.astro';
 import { about } from '../../lib/about';
 import { pageUrl } from '../../lib/pages';
+import { caseStudies, caseStudyUrl, projects, type CaseStudy } from '../../lib/projects';
+import ProjectsPage from '../../components/ProjectsPage.astro';
+import CaseStudyPage from '../../components/CaseStudyPage.astro';
 
 export function getStaticPaths() {
   return languages.flatMap((lang) =>
-    pageIds.map((page) => ({
+    [...pageIds.map((page) => ({
       params: { lang, slug: pages[lang][page].slug || undefined },
       props: { lang, page },
-    })),
+    })), ...caseStudies.map((study) => ({
+      params: { lang, slug: `${pages[lang].projects.slug}/${study.content[lang].slug}` },
+      props: { lang, page: 'projects' as const, study },
+    }))],
   );
 }
 
-interface Props { lang: Language; page: PageId }
-const { lang, page } = Astro.props;
+interface Props { lang: Language; page: PageId; study?: CaseStudy }
+const { lang, page, study } = Astro.props;
+const localizedPaths = study ? { es: caseStudyUrl('es', study), en: caseStudyUrl('en', study) } : undefined;
 const isServices = page === 'services';
-const title = isServices
+const title = study ? study.content[lang].title : page === 'projects' ? projects[lang].title : isServices
   ? lang === 'es'
     ? 'Servicios y precios de páginas web en Uruguay | Tacuara Lab'
     : 'Website services and pricing in Uruguay | Tacuara Lab'
   : page === 'about' ? about[lang].title : undefined;
-const description = page === 'about' ? about[lang].description : pages[lang][page].description;
+const description = study ? study.content[lang].description : page === 'projects' ? projects[lang].description : page === 'about' ? about[lang].description : pages[lang][page].description;
 const wa = (message: string) => `https://wa.me/59898871858?text=${encodeURIComponent(message)}`;
 ---
-<BaseLayout lang={lang} page={page} description={description} title={title}>
-  {page === 'about' ? <AboutPage lang={lang} whatsappUrl={wa(about[lang].message)} /> : isServices ? (
+<BaseLayout lang={lang} page={page} description={description} title={title} localizedPaths={localizedPaths}>
+  {study ? <CaseStudyPage lang={lang} study={study} /> : page === 'projects' ? <ProjectsPage lang={lang} /> : page === 'about' ? <AboutPage lang={lang} whatsappUrl={wa(about[lang].message)} /> : isServices ? (
     lang === 'es' ? (
       <>
         <div class="max-w-3xl">

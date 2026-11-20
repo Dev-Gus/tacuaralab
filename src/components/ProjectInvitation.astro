@@ -1,0 +1,14 @@
+---
+import { projects } from '../lib/projects';
+import type { Language } from '../lib/pages';
+
+interface Props { lang: Language }
+const { lang } = Astro.props;
+const text = projects[lang].invitation;
+const whatsappUrl = `https://wa.me/59898871858?text=${encodeURIComponent(text.message)}`;
+---
+<section class="card mt-16 max-w-3xl" aria-labelledby="invitation-heading">
+  <h2 id="invitation-heading">{text.heading}</h2>
+  <p class="mt-4">{text.text}</p>
+  <a class="button mt-6" href={whatsappUrl}>{text.button}</a>
+</section>
