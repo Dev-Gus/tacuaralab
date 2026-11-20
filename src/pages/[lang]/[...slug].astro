@@ -1,7 +1,9 @@
 ---
-import { languages, pageIds, pages, ui, type Language, type PageId } from '../../lib/pages';
+import { languages, pageIds, pages, type Language, type PageId } from '../../lib/pages';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HomePage from '../../components/HomePage.astro';
+import ContactPage from '../../components/ContactPage.astro';
+import { contact } from '../../lib/contactPage';
 import { home } from '../../lib/home';
 import { whatsappUrl as wa } from '../../lib/contact';
 import AboutPage from '../../components/AboutPage.astro';
@@ -31,8 +33,8 @@ const title = page === 'home' ? home[lang].title : study ? study.content[lang].t
   ? lang === 'es'
     ? 'Servicios y precios de páginas web en Uruguay | Tacuara Lab'
     : 'Website services and pricing in Uruguay | Tacuara Lab'
-  : page === 'about' ? about[lang].title : undefined;
-const description = page === 'home' ? home[lang].description : study ? study.content[lang].description : page === 'projects' ? projects[lang].description : page === 'about' ? about[lang].description : pages[lang][page].description;
+  : page === 'about' ? about[lang].title : contact[lang].title;
+const description = page === 'home' ? home[lang].description : study ? study.content[lang].description : page === 'projects' ? projects[lang].description : page === 'about' ? about[lang].description : page === 'contact' ? contact[lang].description : pages[lang][page].description;
 ---
 <BaseLayout lang={lang} page={page} description={description} title={title} localizedPaths={localizedPaths}>
   {page === 'home' ? <HomePage lang={lang} /> : study ? <CaseStudyPage lang={lang} study={study} /> : page === 'projects' ? <ProjectsPage lang={lang} /> : page === 'about' ? <AboutPage lang={lang} whatsappUrl={wa(about[lang].message)} /> : isServices ? (
@@ -94,16 +96,5 @@ const description = page === 'home' ? home[lang].description : study ? study.con
         <section class="card mt-16" aria-labelledby="closing-title"><h2 id="closing-title">Not sure which one fits?</h2><p class="mt-4">Message me on WhatsApp and I'll tell you straight which one suits your business.</p><div class="mt-6 flex flex-wrap gap-4"><a class="button" href={wa("Hello, I'm not sure which package is right for me.")}>Message me on WhatsApp</a><a class="button button-secondary" href={pageUrl(lang, 'contact')}>Contact form</a></div></section>
       </>
     )
-  ) : (
-  <div class="max-w-3xl">
-    <p class="mb-6 text-sm font-semibold uppercase tracking-widest text-bamboo">Tacuara Lab / {lang.toUpperCase()}</p>
-    <h1>{pages[lang][page].title}</h1>
-    <p class="mt-6 text-xl text-muted">{ui[lang].placeholder}</p>
-  </div>
-  <section class="card mt-12 max-w-3xl" aria-labelledby="placeholder-heading">
-    <h2 id="placeholder-heading">{ui[lang].section}</h2>
-    <p class="mt-4 text-muted">{ui[lang].placeholder}</p>
-    <a class="button button-secondary mt-8" href={pageUrl(lang, 'home')}>{ui[lang].backHome}</a>
-  </section>
-  )}
+  ) : <ContactPage lang={lang} />}
 </BaseLayout>
