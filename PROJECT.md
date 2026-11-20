@@ -24,6 +24,7 @@ Home, Projects (grid + one case study page per project), Services & pricing, Abo
 - Privacy-friendly analytics
 
 ## Status
+- [x] Layout centering fix: shared 72rem container, centered narrow blocks and single-card grids; verified browser layout at 375/768/1024/1280/1536px on all twelve localized routes with no horizontal overflow, About/Services/Projects screenshots, twelve HTTP 200 responses, no client scripts, `npm ci`, `npm run build`, and `npx astro check` (zero errors/warnings/hints).
 - Decisions (Phase 2)
   - Services: two fixed packages plus one by-quote option. Presencia (1 page) and Sitio completo (up to 5 pages). A medida has no listed price and is quoted per project.
   - English package names are Presence / Full site / Custom; Spanish names stay Presencia / Sitio completo / A medida.

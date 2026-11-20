@@ -22,7 +22,7 @@ Reusable classes in `src/styles/global.css`:
 - `button`: green fill, white text, 48px minimum height, 8px radius.
 - `button button-secondary`: transparent fill, green border and text.
 - `card`: white surface, thin border, 16px radius, 24–32px padding.
-- `container`, `nav-link`, `skip-link`: shared layout and navigation helpers.
+- `site-container`, `nav-link`, `skip-link`: shared layout and navigation helpers.
 
 Keyboard focus is visible. Navigation wraps on small screens and stays visible
 without scripts or a menu toggle. No custom animations or transitions.
