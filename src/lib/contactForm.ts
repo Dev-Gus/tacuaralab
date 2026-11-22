@@ -9,6 +9,7 @@ export const WEB3FORMS_HCAPTCHA_SITEKEY: string = '50b2fe65-b00b-4b9e-ad62-3ba47
 
 interface ContactFormContent {
   heading: string;
+  intro: string;
   name: string;
   email: string;
   message: string;
@@ -25,11 +26,12 @@ interface ContactFormContent {
 
 export const contactForm = {
   es: {
-    heading: 'O escribime con este formulario',
+    heading: 'Mandame tu pregunta',
+    intro: 'Escribime lo que necesites saber y te respondo por email.',
     name: 'Nombre',
     email: 'Email',
     message: 'Mensaje',
-    button: 'Enviar mensaje',
+    button: 'Enviar pregunta',
     sending: 'Enviando...',
     success: 'Listo, recibí tu mensaje. Te respondo por email lo antes posible.',
     error: 'No se pudo enviar el mensaje. Probá de nuevo o escribime por WhatsApp.',
@@ -40,11 +42,12 @@ export const contactForm = {
     captchaRequired: 'Completá el hCaptcha antes de enviar.',
   },
   en: {
-    heading: 'Or write to me with this form',
+    heading: 'Send me your question',
+    intro: "Write what you'd like to know and I'll reply by email.",
     name: 'Name',
     email: 'Email',
     message: 'Message',
-    button: 'Send message',
+    button: 'Send question',
     sending: 'Sending...',
     success: "Done, I got your message. I'll reply by email as soon as I can.",
     error: 'The message could not be sent. Try again or message me on WhatsApp.',
