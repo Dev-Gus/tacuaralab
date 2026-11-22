@@ -1,36 +1,18 @@
 ---
+import { Image } from 'astro:assets';
+import portrait from '../assets/about-gus.jpg';
 import { about } from '../lib/about';
 import type { Language } from '../lib/pages';
-
-interface Props {
-  lang: Language;
-  whatsappUrl: string;
-  photo?: { src: string; alt: string; width: number; height: number };
-}
-const { lang, whatsappUrl, photo } = Astro.props;
+interface Props { lang: Language; whatsappUrl: string }
+const { lang, whatsappUrl } = Astro.props;
 const text = about[lang];
 ---
-<div class:list={['flex flex-col gap-8 lg:items-center lg:gap-16', photo && 'lg:flex-row']}>
-  {photo && (
-    <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height}
-      class="w-full max-w-sm rounded-card object-cover lg:w-1/3" />
-  )}
-  <div class="max-w-3xl">
-    <h1>{text.heading}</h1>
-    {text.intro.map((paragraph) => <p class="mt-6 text-xl text-muted">{paragraph}</p>)}
-  </div>
+<div class="about-intro">
+  <h1>{text.heading}</h1>
+  <Image src={portrait} alt={lang === 'es' ? 'Retrato de Gus, fundador de Tacuara Lab' : 'Portrait of Gus, founder of Tacuara Lab'} widths={[480, 800]} sizes="(min-width: 768px) 400px, (max-width: 391px) calc(100vw - 32px), 360px" width={800} height={1000} format="webp" loading="eager" decoding="async" class="about-photo" />
+  <div class="about-copy">{text.intro.map(paragraph => <p class="mt-6 text-muted">{paragraph}</p>)}</div>
 </div>
-<section class="mt-16 max-w-3xl" aria-labelledby="name-heading">
-  <h2 id="name-heading">{text.nameHeading}</h2>
-  <p class="mt-4">{text.name}</p>
-</section>
-<section class="card mt-16 max-w-3xl" aria-labelledby="work-heading">
-  <h2 id="work-heading">{text.workHeading}</h2>
-  <ul class="mt-6 list-disc space-y-2 pl-5">
-    {text.work.map((item) => <li>{item}</li>)}
-  </ul>
-</section>
-<div class="mt-12 max-w-3xl">
-  <p class="text-xl">{text.closing}</p>
-  <a class="button mt-6" href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.button}</a>
-</div>
+<section aria-labelledby="name-heading"><p class="eyebrow">{lang === 'es' ? 'El estudio' : 'The studio'}</p><h2 id="name-heading">{text.nameHeading}</h2><p class="mt-4">{text.name}</p></section>
+<section aria-labelledby="work-heading"><p class="eyebrow">{lang === 'es' ? 'Proceso' : 'Process'}</p><h2 id="work-heading">{text.workHeading}</h2>
+<ol class="numbered-steps mt-8">{text.work.map((item, index) => <li><span class="step-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>)}</ol></section>
+<section><p class="eyebrow">{lang === 'es' ? 'Contacto' : 'Contact'}</p><p>{text.closing}</p><a class="button mt-6" href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.button}</a></section>

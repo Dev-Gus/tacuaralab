@@ -11,13 +11,13 @@ const text = projects[lang];
   <h1>{text.heading}</h1>
   <p class="mt-6 text-xl text-muted">{text.intro}</p>
 </div>
-<div class="mt-12 grid gap-6 lg:grid-cols-2">
+<div class="mt-12 grid gap-6 md:grid-cols-2">
   {caseStudies.map((study) => (
-    <article class="card flex flex-col">
+    <article class="project-card flex flex-col">
       <p class="mb-6 text-sm font-semibold uppercase tracking-widest text-bamboo">{study.content[lang].cardLabel}</p>
       <h2>{study.content[lang].heading}</h2>
       <p class="mt-4 text-muted">{study.content[lang].summary}</p>
-      <a class="button button-secondary mt-8" href={caseStudyUrl(lang, study)}>{text.link}</a>
+      <a class="text-link mt-8" href={caseStudyUrl(lang, study)}>{text.link}</a>
     </article>
   ))}
 </div>

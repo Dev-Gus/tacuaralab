@@ -13,6 +13,7 @@ const content = study.content[lang];
 </div>
 {content.sections.map((section, index) => (
   <section class="mt-16 max-w-3xl" aria-labelledby={`case-section-${index}`}>
+    <p class="eyebrow">{lang === 'es' ? 'El estudio' : 'The studio'}</p>
     <h2 id={`case-section-${index}`}>{section.heading}</h2>
     {section.text && <p class="mt-4">{section.text}</p>}
     {section.items && <ul class="mt-4 list-disc space-y-2 pl-5">
@@ -21,4 +22,4 @@ const content = study.content[lang];
   </section>
 ))}
 <ProjectInvitation lang={lang} />
-<a class="button button-secondary mt-8" href={pageUrl(lang, 'projects')}>{projects[lang].back}</a>
+<a class="text-link mt-8" href={pageUrl(lang, 'projects')}>{projects[lang].back}</a>

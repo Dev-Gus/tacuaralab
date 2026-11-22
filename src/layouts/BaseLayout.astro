@@ -25,9 +25,9 @@ const absoluteUrl = (path: string) => new URL(path, 'https://tacuaralab.com').hr
     <a class="skip-link" href="#content">{text.skip}</a>
     <header class="border-b border-line py-6">
       <div class="site-container flex flex-wrap items-center justify-between gap-4">
-        <a class="text-xl font-semibold tracking-tight no-underline" href={pageUrl(lang, 'home')}>Tacuara Lab</a>
+        <a class="inline-flex min-h-11 items-center text-xl font-semibold tracking-tight no-underline" href={pageUrl(lang, 'home')}>Tacuara Lab</a>
         <a
-          class="inline-flex min-h-11 items-center rounded-lg border border-bamboo px-4 text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
+          class="inline-flex min-h-11 items-center rounded-md border border-bamboo px-4 text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
           href={paths[otherLang]}
           lang={otherLang}
           hreflang={otherLang}
