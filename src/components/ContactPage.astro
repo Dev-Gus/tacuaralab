@@ -1,11 +1,14 @@
 ---
 import { whatsappUrl } from '../lib/contact';
 import { contact } from '../lib/contactPage';
+import { contactForm, WEB3FORMS_ACCESS_KEY, WEB3FORMS_HCAPTCHA_SITEKEY } from '../lib/contactForm';
 import type { Language } from '../lib/pages';
+import contactFormScript from '../scripts/contactForm.js?url';
 
 interface Props { lang: Language }
 const { lang } = Astro.props;
 const text = contact[lang];
+const formText = contactForm[lang];
 ---
 <div class="max-w-3xl">
   <h1>{text.heading}</h1>
@@ -14,7 +17,49 @@ const text = contact[lang];
     <a class="button" href={whatsappUrl(text.message)} target="_blank" rel="noopener noreferrer">{text.button}</a>
     <p class="mt-3 text-sm text-muted">{text.note}</p>
   </div>
-  <!-- A future form block can be inserted here, in the same content column. -->
+  <section class="card mt-12" aria-labelledby="form-heading">
+    <h2 id="form-heading">{formText.heading}</h2>
+    <form
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      class="mt-8 space-y-6"
+      data-contact-form
+      data-sending={formText.sending}
+      data-success={formText.success}
+      data-error={formText.error}
+      data-required={formText.required}
+      data-invalid-email={formText.invalidEmail}
+      data-too-long={formText.tooLong}
+      data-captcha-required={formText.captchaRequired}
+    >
+      <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+      <input type="hidden" name="subject" value="Nuevo mensaje desde Tacuara Lab" />
+      <input type="hidden" name="from_name" value="Tacuara Lab web" />
+      <input type="hidden" name="language" value={lang} />
+      <input type="checkbox" name="botcheck" hidden aria-hidden="true" tabindex="-1" autocomplete="off" />
+      <div>
+        <label class="block font-semibold" for="contact-name">{formText.name}</label>
+        <input class="contact-input mt-2" id="contact-name" name="name" type="text" autocomplete="name" required maxlength="100" aria-describedby="contact-name-error" />
+        <p class="mt-2 text-sm" id="contact-name-error" hidden></p>
+      </div>
+      <div>
+        <label class="block font-semibold" for="contact-email">{formText.email}</label>
+        <input class="contact-input mt-2" id="contact-email" name="email" type="email" autocomplete="email" required maxlength="150" aria-describedby="contact-email-error" />
+        <p class="mt-2 text-sm" id="contact-email-error" hidden></p>
+      </div>
+      <div>
+        <label class="block font-semibold" for="contact-message">{formText.message}</label>
+        <textarea class="contact-input mt-2" id="contact-message" name="message" rows="6" autocomplete="off" required maxlength="2000" aria-describedby="contact-message-error"></textarea>
+        <p class="mt-2 text-sm" id="contact-message-error" hidden></p>
+      </div>
+      <div class="contact-captcha" data-form-captcha data-sitekey={WEB3FORMS_HCAPTCHA_SITEKEY} aria-describedby="contact-status" hidden></div>
+      <p class="text-sm text-muted">{formText.privacy}</p>
+      <button class="button button-secondary w-full sm:w-auto" type="submit">{formText.button}</button>
+      <p id="contact-status" class="contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" data-form-status hidden></p>
+    </form>
+  </section>
+  <!-- A URL import keeps this module on Contact, even with shared route imports. -->
+  <script is:inline type="module" src={contactFormScript}></script>
   <div class="mt-12 grid gap-6 md:grid-cols-2">
     <section class="card" aria-labelledby="call-heading">
       <h2 id="call-heading">{text.callHeading}</h2>
@@ -33,3 +78,23 @@ const text = contact[lang];
     </ul>
   </section>
 </div>
+
+<style>
+  .contact-input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 3rem;
+    border: 1px solid var(--color-muted);
+    border-radius: 0.5rem;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    padding: 0.75rem 1rem;
+    font: inherit;
+  }
+  textarea.contact-input { resize: vertical; }
+  .contact-input[aria-invalid="true"] { border-width: 2px; }
+  .contact-captcha { min-height: 144px; }
+  .contact-status { border-left: 3px solid var(--color-bamboo); padding-left: 1rem; overflow-wrap: anywhere; }
+  button:disabled { cursor: wait; opacity: 0.65; }
+</style>
