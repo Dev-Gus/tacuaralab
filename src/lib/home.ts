@@ -41,7 +41,7 @@ export const home = {
       { heading: 'Ajustamos juntos', text: 'Hacemos las rondas de cambios incluidas en tu paquete.' },
       { heading: 'Publicamos', text: 'Lo publico en tu dominio y lo dejo funcionando.' },
     ] },
-    proof: { heading: 'Este sitio es mi primer proyecto', text: 'Busco mis primeros 5 clientes. Precio de lanzamiento a cambio de un testimonio y de poder mostrar el trabajo.', button: 'Ver el caso de estudio' },
+    proof: { heading: 'Dos proyectos propios', text: 'Todavía no tengo trabajos para clientes. Acá podés ver mi propio sitio y el de mi servicio de corte de pasto. Busco mis primeros 5 clientes: precio de lanzamiento a cambio de un testimonio y de poder mostrar el trabajo.', button: 'Ver proyectos' },
     closing: '¿Tenés un negocio y querés que te encuentren?',
   },
   en: {
@@ -68,7 +68,7 @@ export const home = {
       { heading: 'We adjust together', text: 'We do the revision rounds included in your package.' },
       { heading: 'We publish', text: 'I put it live on your domain and make sure it works.' },
     ] },
-    proof: { heading: 'This site is my first project', text: 'I am looking for my first 5 clients. Launch price in exchange for a testimonial and permission to show the work.', button: 'See the case study' },
+    proof: { heading: 'Two projects of my own', text: "I don't have client work yet. Here are my own site and the one for my lawn care service. I'm looking for my first 5 clients: launch price in exchange for a testimonial and permission to show the work.", button: 'See projects' },
     closing: 'Got a business and want to be found?',
   },
 } satisfies Record<Language, HomeContent>;

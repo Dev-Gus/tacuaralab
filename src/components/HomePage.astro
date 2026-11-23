@@ -1,7 +1,6 @@
 ---
 import { home } from '../lib/home';
 import { pageUrl, type Language } from '../lib/pages';
-import { caseStudies, caseStudyUrl } from '../lib/projects';
 import { whatsappUrl } from '../lib/contact';
 interface Props { lang: Language }
 const { lang } = Astro.props;
@@ -46,7 +45,7 @@ const contact = whatsappUrl(text.message);
   <section class="home-section home-proof" aria-labelledby="proof-title">
     <p class="eyebrow">{lang === 'es' ? 'Proyectos' : 'Projects'}</p>
     <h2 id="proof-title">{text.proof.heading}</h2>
-    <div><p class="text-lg text-muted">{text.proof.text}</p><a class="text-link mt-6" href={caseStudyUrl(lang, caseStudies[0]!)}>{text.proof.button}</a></div>
+    <div><p class="text-lg text-muted">{text.proof.text}</p><a class="text-link mt-6" href={pageUrl(lang, 'projects')}>{text.proof.button}</a></div>
   </section>
   <section class="home-closing" aria-labelledby="closing-title">
     <p class="eyebrow">{lang === 'es' ? 'Contacto' : 'Contact'}</p>

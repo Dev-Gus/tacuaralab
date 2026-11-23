@@ -21,7 +21,6 @@ const content = study.content[lang];
 </div>}
 {content.sections.map((section, index) => (
   <section class="mt-16 max-w-3xl" aria-labelledby={`case-section-${index}`}>
-    <p class="eyebrow">{content.images ? content.cardLabel : lang === 'es' ? 'El estudio' : 'The studio'}</p>
     <h2 id={`case-section-${index}`}>{section.heading}</h2>
     {section.text && <p class="mt-4">{section.text}</p>}
     {section.items && <ul class="mt-4 list-disc space-y-2 pl-5">
