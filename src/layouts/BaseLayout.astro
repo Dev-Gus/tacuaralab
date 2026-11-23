@@ -19,13 +19,25 @@ const absoluteUrl = (path: string) => new URL(path, 'https://tacuaralab.com').hr
     <link rel="alternate" hreflang="es" href={absoluteUrl(paths.es)} />
     <link rel="alternate" hreflang="en" href={absoluteUrl(paths.en)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <title>{title ?? `${pages[lang][page].title} | Tacuara Lab`}</title>
   </head>
   <body class="flex min-h-screen flex-col">
     <a class="skip-link" href="#content">{text.skip}</a>
     <header class="border-b border-line py-3 md:py-6">
       <div class="site-container flex flex-wrap items-center justify-between gap-x-4 gap-y-2 md:gap-y-4">
-        <a class="inline-flex min-h-11 items-center text-xl font-semibold tracking-tight no-underline" href={pageUrl(lang, 'home')}>Tacuara Lab</a>
+        <a class="inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-xl font-semibold tracking-tight no-underline" href={pageUrl(lang, 'home')}>
+          <svg class="shrink-0" width="18.47" height="28" viewBox="0 -2 62 94" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <g transform="rotate(12 20 45)">
+              <rect x="14" y="0" width="12" height="90" rx="6" fill="#2F6048" />
+              <rect x="11" y="27" width="18" height="5" rx="2.5" fill="#0B4A37" />
+              <rect x="11" y="58" width="18" height="5" rx="2.5" fill="#0B4A37" />
+              <path d="M26 30 C40 20 48 22 52 18 C50 30 40 36 26 30 Z" fill="#5FA777" />
+            </g>
+          </svg>
+          Tacuara Lab
+        </a>
         <a
           class="inline-flex min-h-11 items-center rounded-md border border-bamboo px-4 text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
           href={paths[otherLang]}

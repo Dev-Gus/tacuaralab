@@ -3,6 +3,14 @@
 Approved palette (unchanged): Paper `#F6F4ED`, Surface `#FFFFFF`, Ink `#202B27`, Muted `#58655D`, Bamboo `#2F6048`, Line `#CDD4CA`.
 System fonts only; no downloads. Content is capped at 72rem with 16px mobile / 32px larger-screen gutters. Spacing follows the 4px base.
 
+## Logo mark and favicons
+
+The shared ES/EN header pairs the supplied inline SVG cane mark (28px tall, 8px gap) with real HTML text spelled exactly "Tacuara Lab", without a trailing period. Both form one link to the current language's Home. The mark is decorative: `aria-hidden="true"`, no title; the HTML brand text remains the link's accessible name. Preserve the supplied geometry; adjust only the viewBox if needed to prevent clipping. Keep the compact brand/language row and single navigation row, with 44px minimum tap targets.
+
+Use Bamboo `#2F6048` for primary green and Paper `#F6F4ED` for cream. No dark green or leaf tokens exist in the palette: retain the artwork fallbacks `#0B4A37` (cane joints), `#5FA777` (header leaf) and `#A8D8B0` (favicon leaf). These artwork colors do not change UI tokens.
+
+The favicon uses the separately supplied thicker cane and larger leaf on a rounded Bamboo badge (64×64 viewBox, radius 14, an icon-only exception to the UI radius rule). `public/favicon.svg` is the source; generate `favicon-32.png` (32×32) and `apple-touch-icon.png` (180×180) once with the existing sharp dependency and commit the outputs. The shared head links all three; no build step or client JavaScript is needed.
+
 ## Section pattern
 
 Content sections use a 1px Line top rule and fluid 4rem mobile / 6rem desktop vertical padding. A small uppercase Bamboo eyebrow precedes the heading (0.8125rem, 0.08em letter spacing). Body paragraphs have a maximum width of 60ch. Hero content keeps its existing wording and uses an open layout without a top rule.
