@@ -8,7 +8,7 @@ export const pages = {
     home: { slug: '', title: 'Inicio', description: 'Sitio de ejemplo de Tacuara Lab, estudio web en Uruguay.' },
     projects: { slug: 'proyectos', title: 'Proyectos', description: 'Proyectos de ejemplo de diseño web en Uruguay.' },
     services: { slug: 'servicios', title: 'Servicios', description: 'Páginas web para negocios de Uruguay, hechas en Tacuarembó. Precio fijo en dólares, plazos claros y sin letra chica.' },
-    about: { slug: 'sobre', title: 'Acerca de', description: 'Conocé más sobre Tacuara Lab en Uruguay.' },
+    about: { slug: 'sobre', title: 'Sobre mí', description: 'Conocé más sobre Tacuara Lab en Uruguay.' },
     contact: { slug: 'contacto', title: 'Contacto', description: 'Contactá a Tacuara Lab desde Uruguay.' },
   },
   en: {
