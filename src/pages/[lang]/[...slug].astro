@@ -12,6 +12,7 @@ import { pageUrl } from '../../lib/pages';
 import { caseStudies, caseStudyUrl, projects, type CaseStudy } from '../../lib/projects';
 import ProjectsPage from '../../components/ProjectsPage.astro';
 import CaseStudyPage from '../../components/CaseStudyPage.astro';
+import { professionalService, caseStudyBreadcrumbs } from '../../lib/structuredData';
 
 export function getStaticPaths() {
   return languages.flatMap((lang) =>
@@ -35,8 +36,11 @@ const title = page === 'home' ? home[lang].title : study ? study.content[lang].t
     : 'Website services and pricing in Uruguay | Tacuara Lab'
   : page === 'about' ? about[lang].title : contact[lang].title;
 const description = page === 'home' ? home[lang].description : study ? study.content[lang].description : page === 'projects' ? projects[lang].description : page === 'about' ? about[lang].description : page === 'contact' ? contact[lang].description : pages[lang][page].description;
+const structuredData = study
+  ? [caseStudyBreadcrumbs(lang, caseStudyUrl(lang, study), study.content[lang].heading)]
+  : page === 'home' ? [professionalService(lang, description)] : [];
 ---
-<BaseLayout lang={lang} page={page} description={description} title={title} localizedPaths={localizedPaths}>
+<BaseLayout lang={lang} page={page} description={description} title={title} localizedPaths={localizedPaths} structuredData={structuredData}>
   {page === 'home' ? <HomePage lang={lang} /> : study ? <CaseStudyPage lang={lang} study={study} /> : page === 'projects' ? <ProjectsPage lang={lang} /> : page === 'about' ? <AboutPage lang={lang} whatsappUrl={wa(about[lang].message)} /> : isServices ? (
     lang === 'es' ? (
       <>

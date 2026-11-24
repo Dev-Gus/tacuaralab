@@ -4,6 +4,7 @@ import { contact } from '../lib/contactPage';
 import { contactForm, WEB3FORMS_ACCESS_KEY, WEB3FORMS_HCAPTCHA_SITEKEY } from '../lib/contactForm';
 import type { Language } from '../lib/pages';
 import contactFormScript from '../scripts/contactForm.js?url';
+import { TELEPHONE } from '../data/site';
 
 interface Props { lang: Language }
 const { lang } = Astro.props;
@@ -64,7 +65,7 @@ const formText = contactForm[lang];
   <script is:inline type="module" src={contactFormScript}></script>
   <dl class="contact-details mt-12">
     <div><dt>WhatsApp</dt><dd><a class="text-link" href={whatsappUrl(text.message)} target="_blank" rel="noopener noreferrer">{text.button}</a></dd></div>
-    <div><dt>{lang === 'es' ? 'Teléfono' : 'Phone'}</dt><dd><p>{text.phone}</p><a class="text-link" href="tel:+59898871858">{text.callButton}</a></dd></div>
+    <div><dt>{lang === 'es' ? 'Teléfono' : 'Phone'}</dt><dd><p>{text.phone}</p><a class="text-link" href={`tel:${TELEPHONE}`}>{text.callButton}</a></dd></div>
     <div><dt>{lang === 'es' ? 'Ubicación' : 'Location'}</dt><dd>{text.location}</dd></div>
   </dl>
   <section class="mt-12" aria-labelledby="message-heading">

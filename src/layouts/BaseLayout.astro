@@ -1,27 +1,22 @@
 ---
 import { pageIds, pages, pageUrl, ui, type Language, type PageId } from '../lib/pages';
+import { SITE_NAME } from '../data/site';
+import SeoHead from '../components/SeoHead.astro';
 import '../styles/global.css';
 
-interface Props { lang: Language; page: PageId; description: string; title?: string; localizedPaths?: Record<Language, string> }
-const { lang, page, description, title, localizedPaths } = Astro.props;
+interface Props { lang: Language; page: PageId; description: string; title?: string; localizedPaths?: Record<Language, string>; structuredData?: Record<string, unknown>[] }
+const { lang, page, description, title, localizedPaths, structuredData } = Astro.props;
 const otherLang = lang === 'es' ? 'en' : 'es';
 const text = ui[lang];
 const paths = localizedPaths ?? { es: pageUrl('es', page), en: pageUrl('en', page) };
-const absoluteUrl = (path: string) => new URL(path, 'https://tacuaralab.com').href;
 ---
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="canonical" href={absoluteUrl(paths[lang])} />
-    <link rel="alternate" hreflang="es" href={absoluteUrl(paths.es)} />
-    <link rel="alternate" hreflang="en" href={absoluteUrl(paths.en)} />
+    <SeoHead lang={lang} title={title ?? `${pages[lang][page].title} | ${SITE_NAME}`} description={description} path={paths[lang]} localizedPaths={paths} structuredData={structuredData} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <title>{title ?? `${pages[lang][page].title} | Tacuara Lab`}</title>
   </head>
   <body class="flex min-h-screen flex-col">
     <a class="skip-link" href="#content">{text.skip}</a>

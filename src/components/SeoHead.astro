@@ -1,0 +1,37 @@
+---
+import { INDEXABLE, SITE_NAME, absoluteUrl } from '../data/site';
+import type { Language } from '../lib/pages';
+
+interface Props {
+  lang: Language;
+  title: string;
+  description?: string;
+  path: string;
+  localizedPaths?: Record<Language, string>;
+  structuredData?: Record<string, unknown>[];
+}
+
+const { lang, title, description, path, localizedPaths, structuredData = [] } = Astro.props;
+const locales = { es: 'es_UY', en: 'en_US' };
+const otherLang = lang === 'es' ? 'en' : 'es';
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{description && <meta name="description" content={description} />}
+{!INDEXABLE && <meta name="robots" content="noindex, nofollow" />}
+<title>{title}</title>
+<link rel="canonical" href={absoluteUrl(path)} />
+{localizedPaths && <>
+  <link rel="alternate" hreflang="es" href={absoluteUrl(localizedPaths.es)} />
+  <link rel="alternate" hreflang="en" href={absoluteUrl(localizedPaths.en)} />
+  <link rel="alternate" hreflang="x-default" href={absoluteUrl(localizedPaths.es)} />
+</>}
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description ?? ''} />
+<meta property="og:url" content={absoluteUrl(path)} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:locale" content={locales[lang]} />
+{localizedPaths && <meta property="og:locale:alternate" content={locales[otherLang]} />}
+<meta name="twitter:card" content="summary" />
+{structuredData.map((data) => <script is:inline type="application/ld+json" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />)}

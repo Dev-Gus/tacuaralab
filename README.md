@@ -21,6 +21,8 @@ npm run preview
 `@emnapi/core` is explicitly installed for the WebAssembly runtime used by
 Astro's checker on Windows.
 
+`INDEXABLE` in `src/data/site.ts` defaults to `false` (noindex, blocked robots, no sitemap); flip to `true` in Phase 4 only to allow indexing and emit `/sitemap.xml` with ES/EN alternates.
+
 ## Routes
 
 - Spanish: `/es`, `/es/proyectos`, `/es/servicios`, `/es/sobre`, `/es/contacto`.

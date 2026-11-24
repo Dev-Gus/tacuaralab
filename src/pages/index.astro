@@ -1,0 +1,14 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import { pageUrl } from '../lib/pages';
+
+const paths = { es: pageUrl('es', 'home'), en: pageUrl('en', 'home') };
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <SeoHead lang="es" title="Redirecting to: /es/" path={paths.es} localizedPaths={paths} />
+    <meta http-equiv="refresh" content="0;url=/es/" />
+  </head>
+  <body><a href="/es/">Redirecting from <code>/</code> to <code>/es/</code></a></body>
+</html>
