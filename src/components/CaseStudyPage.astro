@@ -13,13 +13,27 @@ const content = study.content[lang];
   <h1>{content.heading}</h1>
   {content.intro && <p class="mt-6 text-xl text-muted">{content.intro}</p>}
 </div>
+{content.screenshots && <div class="my-16 grid max-w-3xl justify-items-center gap-8 md:grid-cols-2">
+  {content.screenshots.map((image, index) => (
+    <Image src={image.src} width={image.src.width} height={image.src.height} alt={image.alt} widths={[280, 560, 780]} sizes="(max-width: 311px) calc(100vw - 32px), 280px" format="webp" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" class="h-auto w-full max-w-[280px] border border-line" />
+  ))}
+</div>}
 {content.images && <div class="my-16 max-w-3xl space-y-12">
   {content.images.map((image) => <figure>
     <Image src={image.src} alt={image.alt} widths={image.phone ? [320, 480, 720] : [320, 640, 960, 1536]} sizes={image.phone ? '(max-width: 391px) calc(100vw - 32px), 360px' : '(min-width: 832px) 768px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 32px)'} format="webp" loading="lazy" decoding="async" class={image.phone ? 'mx-auto h-auto w-full max-w-[360px]' : 'h-auto w-full'} />
     <figcaption class="mt-3 text-sm text-muted">{image.caption}</figcaption>
   </figure>)}
 </div>}
-{content.sections.map((section, index) => (
+{content.facts && <dl class="grid max-w-3xl grid-cols-2 gap-8 md:grid-cols-4">
+  {content.facts.map((fact) => (
+    <div class="open-item">
+      <dt class="text-base font-semibold">{fact.label}</dt>
+      <dd class="mt-2 text-base text-muted">{fact.text}</dd>
+    </div>
+  ))}
+</dl>}
+{content.buildNote && <p class="mt-8 mb-16 max-w-3xl text-sm text-muted">{content.buildNote}</p>}
+{content.sections?.map((section, index) => (
   <section class="mt-16 max-w-3xl" aria-labelledby={`case-section-${index}`}>
     <h2 id={`case-section-${index}`}>{section.heading}</h2>
     {section.text && <p class="mt-4">{section.text}</p>}

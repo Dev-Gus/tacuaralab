@@ -3,6 +3,10 @@ import type { ImageMetadata } from 'astro';
 import desktop from '../assets/cero-yuyo/cero-yuyo-desktop.png';
 import mobile from '../assets/cero-yuyo/cero-yuyo-mobile.png';
 import beforeAfter from '../assets/cero-yuyo/cero-yuyo-antes-despues.png';
+import homeEs from '../assets/tacuara-lab/tacuara-lab-home-es.webp';
+import servicesEs from '../assets/tacuara-lab/tacuara-lab-services-es.webp';
+import homeEn from '../assets/tacuara-lab/tacuara-lab-home-en.webp';
+import servicesEn from '../assets/tacuara-lab/tacuara-lab-services-en.webp';
 
 export interface CaseStudyContent {
   slug: string;
@@ -13,8 +17,11 @@ export interface CaseStudyContent {
   cardLabel: string;
   summary: string;
   intro?: string;
+  screenshots?: { src: ImageMetadata; alt: string }[];
+  facts?: { label: string; text: string }[];
+  buildNote?: string;
   images?: { src: ImageMetadata; alt: string; caption: string; phone?: boolean }[];
-  sections: { heading: string; text?: string; items?: string[] }[];
+  sections?: { heading: string; text?: string; items?: string[] }[];
 }
 
 export interface CaseStudy {
@@ -24,30 +31,30 @@ export interface CaseStudy {
 export const projects = {
   es: {
     title: 'Proyectos de diseño web en Uruguay | Tacuara Lab',
-    description: 'Conocé Tacuara Lab y Cero Yuyo, dos proyectos propios de diseño web desde Tacuarembó, Uruguay, y cómo podés ser uno de mis primeros clientes.',
+    description: 'Conocé Tacuara Lab y Cero Yuyo, dos proyectos propios de diseño web desde Tacuarembó, Uruguay, y cómo trabajar conmigo.',
     heading: 'Proyectos',
-    intro: 'Todavía no publiqué trabajos para clientes, y prefiero decírtelo de frente. Mientras tanto, acá están dos proyectos propios: este sitio y el de mi servicio de corte de pasto.',
+    intro: 'Dos proyectos hechos de punta a punta: este sitio y el de Cero Yuyo, mi servicio de corte de pasto en Tacuarembó. Así trabajo: simple, rápido y pensado para el celular.',
     link: 'Ver el caso de estudio',
     back: 'Volver a Proyectos',
     invitation: {
-      heading: '¿Tu negocio puede ser el próximo?',
-      text: 'Estoy buscando mis primeros clientes. A cambio de un precio de lanzamiento, te pido un testimonio y permiso para mostrar el trabajo acá.',
+      heading: '¿Tu negocio es el próximo?',
+      text: 'Estoy tomando mis primeros cinco proyectos con precio de lanzamiento. A cambio, te pido un testimonio y permiso para mostrar el trabajo acá.',
       button: 'Escribime por WhatsApp',
-      message: 'Hola Gus, vi la página de Proyectos y me interesa ser uno de tus primeros clientes.',
+      message: 'Hola Gus, vi tus proyectos y quiero que armemos algo para mi negocio.',
     },
   },
   en: {
     title: 'Web design projects in Uruguay | Tacuara Lab',
-    description: 'Explore Tacuara Lab and Cero Yuyo, two of my own web design projects from Tacuarembó, Uruguay, and find out how to become one of my first clients.',
+    description: 'Explore Tacuara Lab and Cero Yuyo, two of my own web design projects from Tacuarembó, Uruguay, and find out how to work with me.',
     heading: 'Projects',
-    intro: "I haven't published client work yet, and I'd rather say that upfront. Meanwhile, here are two projects of my own: this site and the one for my lawn care service.",
+    intro: 'Two projects, built end to end: this site, and Cero Yuyo, my lawn care service in Tacuarembó. This is how I work: simple, fast and mobile-first.',
     link: 'Read the case study',
     back: 'Back to Projects',
     invitation: {
       heading: 'Could your business be next?',
-      text: "I'm looking for my first clients. In exchange for a launch price, I ask for a testimonial and permission to show the work here.",
+      text: "I'm taking my first five projects at a launch price. In return, I ask for a testimonial and permission to show the work here.",
       button: 'Message me on WhatsApp',
-      message: "Hi Gus, I saw the Projects page and I'd like to be one of your first clients.",
+      message: "Hi Gus, I saw your projects and I'd like to build something for my business.",
     },
   },
 };
@@ -119,17 +126,18 @@ export const caseStudies: CaseStudy[] = [
         heading: 'Tacuara Lab: el sitio que estás viendo',
         cardLabel: 'Proyecto propio',
         summary: 'El sitio de mi estudio, hecho para mostrar cómo trabajo: claro, rápido y sin vueltas.',
-        sections: [
-          { heading: 'Qué es', text: 'El sitio de mi estudio. Lo armé para mostrar cómo trabajo: claro, rápido y sin vueltas.' },
-          { heading: 'El objetivo', text: 'Que un negocio de Tacuarembó entienda en un minuto qué hago, cuánto cuesta y cómo escribirme.' },
-          { heading: 'Qué hice', items: [
-            'Un sitio en español e inglés, con rutas separadas para cada idioma.',
-            'Pensado primero para el celular, con navegación simple.',
-            'Precios a la vista, con qué incluye cada paquete.',
-            'Contacto directo por WhatsApp.',
-          ] },
-          { heading: 'Cómo está hecho', text: 'Astro y Tailwind, sin código innecesario, alojado en Cloudflare.' },
+        intro: 'Un sitio para que un negocio de Tacuarembó entienda en un minuto qué hago, cuánto cuesta y cómo escribirme.',
+        screenshots: [
+          { src: homeEs, alt: 'Inicio de Tacuara Lab en español en el celular: diseño web para negocios de Tacuarembó y contacto por WhatsApp.' },
+          { src: servicesEs, alt: 'Servicios y precios de Tacuara Lab en español en el celular: paquete Presencia, precio de lanzamiento y lo que incluye.' },
         ],
+        facts: [
+          { label: 'Español e inglés', text: 'Rutas separadas para cada idioma' },
+          { label: 'Celular primero', text: 'Navegación simple' },
+          { label: 'Precios a la vista', text: 'Con qué incluye cada paquete' },
+          { label: 'WhatsApp directo', text: 'Un toque y escribís' },
+        ],
+        buildNote: 'Hecho con Astro y Tailwind, alojado en Cloudflare.',
       },
       en: {
         slug: 'tacuara-lab',
@@ -139,17 +147,18 @@ export const caseStudies: CaseStudy[] = [
         heading: "Tacuara Lab: the site you're looking at",
         cardLabel: 'Own project',
         summary: "My studio's website, built to show how I work: clear, fast, no fluff.",
-        sections: [
-          { heading: 'What it is', text: "My studio's website. I built it to show how I work: clear, fast, no fluff." },
-          { heading: 'The goal', text: 'Let a business owner understand in a minute what I do, what it costs and how to reach me.' },
-          { heading: 'What I did', items: [
-            'A Spanish and English site, with separate routes per language.',
-            'Mobile-first, with simple navigation.',
-            'Prices upfront, with what each package includes.',
-            'Direct contact through WhatsApp.',
-          ] },
-          { heading: "How it's built", text: 'Astro and Tailwind, no unnecessary code, hosted on Cloudflare.' },
+        intro: 'A site so a business in Tacuarembó can understand in one minute what I do, what it costs and how to reach me.',
+        screenshots: [
+          { src: homeEn, alt: 'Tacuara Lab homepage in English on a phone: web design for businesses in Tacuarembó and contact through WhatsApp.' },
+          { src: servicesEn, alt: 'Tacuara Lab services and pricing in English on a phone: the Presence package, launch price and what it includes.' },
         ],
+        facts: [
+          { label: 'Spanish and English', text: 'Separate routes for each language' },
+          { label: 'Mobile first', text: 'Simple navigation' },
+          { label: 'Prices upfront', text: 'What each package includes' },
+          { label: 'Direct WhatsApp', text: "One tap and you're writing" },
+        ],
+        buildNote: 'Built with Astro and Tailwind, hosted on Cloudflare.',
       },
     },
   },
