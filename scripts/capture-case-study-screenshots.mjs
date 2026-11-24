@@ -7,6 +7,7 @@ import { createRequire } from 'node:module';
 
 // Run after npm ci and npm run build. Playwright is a development-only tool.
 const root = fileURLToPath(new URL('../', import.meta.url));
+const coversOnly = process.argv.includes('--covers-only');
 const loadDependency = createRequire(new URL('../package.json', import.meta.url));
 const sharp = loadDependency('sharp');
 async function loadPlaywright() {
@@ -58,18 +59,35 @@ try {
   await fs.mkdir(assets, { recursive: true });
   await fs.mkdir(covers, { recursive: true });
   for (const lang of ['es', 'en']) {
-    const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale: lang === 'es' ? 'es-UY' : 'en-US', reducedMotion: 'reduce' });
+    const locale = lang === 'es' ? 'es-UY' : 'en-US';
+    if (!coversOnly) {
+      const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale, reducedMotion: 'reduce' });
+      try {
+        const page = await context.newPage();
+        for (const [name, route] of [['home', `/${lang}/`], ['services', lang === 'es' ? '/es/servicios/' : '/en/services/']]) {
+          const response = await page.goto(base + route, { waitUntil: 'networkidle' });
+          if (response.status() !== 200) throw new Error(`HTTP ${response.status()}: ${route}`);
+          await page.evaluate(() => document.fonts.ready);
+          await page.evaluate(() => window.scrollTo(0, 0));
+          const png = await page.screenshot({ type: 'png', fullPage: false, animations: 'disabled' });
+          await saveWebp(sharp(png), path.join(assets, `tacuara-lab-${name}-${lang}.webp`), 80000);
+        }
+      } finally { await context.close(); }
+    }
+    const context = await browser.newContext({ viewport: { width: 1024, height: 768 }, deviceScaleFactor: 2, locale, reducedMotion: 'reduce' });
     try {
       const page = await context.newPage();
-      for (const [name, route] of [['home', `/${lang}/`], ['services', lang === 'es' ? '/es/servicios/' : '/en/services/']]) {
-        const response = await page.goto(base + route, { waitUntil: 'networkidle' });
-        if (response.status() !== 200) throw new Error(`HTTP ${response.status()}: ${route}`);
-        await page.evaluate(() => document.fonts.ready);
-        await page.evaluate(() => window.scrollTo(0, 0));
-        const png = await page.screenshot({ type: 'png', fullPage: false, animations: 'disabled' });
-        await saveWebp(sharp(png), path.join(assets, `tacuara-lab-${name}-${lang}.webp`), 80000);
-      }
-      await saveWebp(sharp(path.join(assets, `tacuara-lab-home-${lang}.webp`)).extract({ left: 16, top: 350, width: 748, height: 421 }).resize(800, 450, { fit: 'cover' }), path.join(covers, `tacuara-lab-${lang}.webp`), 60000);
+      const response = await page.goto(`${base}/${lang}/`, { waitUntil: 'networkidle' });
+      if (response.status() !== 200) throw new Error(`HTTP ${response.status()}: /${lang}/`);
+      await page.evaluate(() => document.fonts.ready);
+      const hero = await page.locator('.home-hero').boundingBox();
+      // End in the hero's bottom padding, after its buttons and before the next section.
+      const height = Math.floor(hero.y + hero.height);
+      await page.setViewportSize({ width: 1024, height: Math.max(768, height) });
+      const png = await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: 1024, height }, animations: 'disabled' });
+      const background = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+      // Contain the whole capture in 16:9 instead of cropping through its text.
+      await saveWebp(sharp(png).resize(800, 450, { fit: 'contain', background }), path.join(covers, `tacuara-lab-${lang}.webp`), 60000);
     } finally { await context.close(); }
   }
   await saveWebp(sharp(path.join(root, 'src/assets/cero-yuyo/cero-yuyo-desktop.png')).extract({ left: 1334, top: 390, width: 920, height: 518 }).resize(800, 450, { fit: 'cover' }), path.join(covers, 'cero-yuyo.webp'), 60000);

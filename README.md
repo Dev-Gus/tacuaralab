@@ -23,6 +23,7 @@ Astro's checker on Windows.
 
 After pricing or copy changes, run `npm ci` and `npm run build`; prepare the capture tool with `npm exec --yes --package=playwright -- playwright --version` (Google Chrome must be installed).
 Run `node scripts/capture-case-study-screenshots.mjs` to regenerate the four 390×844 @2x screenshots and three card covers from the local build; set `CHROME_PATH` or `PLAYWRIGHT_MODULE` if needed.
+Add `--covers-only` to refresh just the card covers. Tacuara Lab covers capture the complete header and hero at 1024px wide, ending after the hero buttons; the full capture fits inside 800×450 on the existing page background without cutting text.
 Run `npm run build` again and review both languages before committing the updated WebP files in `src/assets/tacuara-lab/` and `src/assets/project-covers/`.
 
 `INDEXABLE` in `src/data/site.ts` defaults to `false` (noindex, blocked robots, no sitemap); flip to `true` in Phase 4 only to allow indexing and emit `/sitemap.xml` with ES/EN alternates.
