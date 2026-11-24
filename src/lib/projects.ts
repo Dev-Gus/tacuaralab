@@ -8,7 +8,12 @@ import servicesEs from '../assets/tacuara-lab/tacuara-lab-services-es.webp';
 import homeEn from '../assets/tacuara-lab/tacuara-lab-home-en.webp';
 import servicesEn from '../assets/tacuara-lab/tacuara-lab-services-en.webp';
 
+import ceroCover from '../assets/project-covers/cero-yuyo.webp';
+import tacuaraCoverEs from '../assets/project-covers/tacuara-lab-es.webp';
+import tacuaraCoverEn from '../assets/project-covers/tacuara-lab-en.webp';
+
 export interface CaseStudyContent {
+  cover: { src: ImageMetadata; alt: string };
   slug: string;
   title: string;
   description: string;
@@ -63,6 +68,7 @@ export const caseStudies: CaseStudy[] = [
   {
     content: {
       es: {
+        cover: { src: ceroCover, alt: 'Gus con una desmalezadora al hombro, en la foto principal de Cero Yuyo.' },
         slug: 'cero-yuyo',
         title: 'Caso de estudio: Cero Yuyo | Tacuara Lab, Uruguay',
         description: 'Un sitio de una página para Cero Yuyo, mi servicio de corte de pasto en Tacuarembó, Uruguay: trabajos reales y contacto por WhatsApp.',
@@ -89,6 +95,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       en: {
+        cover: { src: ceroCover, alt: 'Gus holding a brush cutter over his shoulder in the Cero Yuyo hero photo.' },
         slug: 'cero-yuyo',
         title: 'Cero Yuyo case study | Tacuara Lab, Uruguay',
         description: 'A one-page site for Cero Yuyo, my lawn care service in Tacuarembó, Uruguay: real jobs and contact through WhatsApp.',
@@ -119,6 +126,7 @@ export const caseStudies: CaseStudy[] = [
   {
     content: {
       es: {
+        cover: { src: tacuaraCoverEs, alt: 'Inicio de Tacuara Lab en español: sitios web claros para negocios de Uruguay.' },
         slug: 'tacuara-lab',
         title: 'Caso de estudio: Tacuara Lab | Diseño web en Uruguay',
         description: 'Cómo hice el sitio de Tacuara Lab en Uruguay: español e inglés, navegación simple en el celular, precios a la vista y contacto directo por WhatsApp.',
@@ -140,6 +148,7 @@ export const caseStudies: CaseStudy[] = [
         buildNote: 'Hecho con Astro y Tailwind, alojado en Cloudflare.',
       },
       en: {
+        cover: { src: tacuaraCoverEn, alt: 'Tacuara Lab homepage in English: clear websites for businesses in Uruguay.' },
         slug: 'tacuara-lab',
         title: 'Tacuara Lab case study | Web design in Uruguay',
         description: 'How I built the Tacuara Lab website in Uruguay: Spanish and English, simple mobile navigation, upfront prices and direct contact through WhatsApp.',

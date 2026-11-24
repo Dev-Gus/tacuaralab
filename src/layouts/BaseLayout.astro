@@ -33,18 +33,18 @@ const paths = localizedPaths ?? { es: pageUrl('es', page), en: pageUrl('en', pag
           </svg>
           Tacuara Lab
         </a>
-        <a
-          class="inline-flex min-h-11 items-center rounded-md border border-bamboo px-4 text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
-          href={paths[otherLang]}
-          lang={otherLang}
-          hreflang={otherLang}
-          aria-label={text.switchLanguage}
-        >{otherLang === 'es' ? 'Español' : 'English'}</a>
         <nav class="w-full lg:w-auto" aria-label={text.navigation}>
           <ul class="site-nav-list flex gap-0 md:flex-wrap md:gap-1">
             {pageIds.map((id) => (
               <li><a class="nav-link" href={pageUrl(lang, id)} aria-current={id === page ? 'page' : undefined}>{pages[lang][id].title}</a></li>
             ))}
+            <li><a
+          class="language-link inline-flex min-h-11 items-center rounded-md border border-bamboo px-2 text-xs md:px-4 md:text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
+          href={paths[otherLang]}
+          lang={otherLang}
+          hreflang={otherLang}
+          aria-label={text.switchLanguage}
+        >{otherLang === 'es' ? 'Español' : 'English'}</a></li>
           </ul>
         </nav>
       </div>

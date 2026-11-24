@@ -8,7 +8,7 @@ const { lang } = Astro.props;
 const text = projects[lang].invitation;
 const whatsappUrl = buildWhatsappUrl(text.message);
 ---
-<section class="mt-16 max-w-3xl" aria-labelledby="invitation-heading">
+<section class="project-invitation mt-8 max-w-3xl" aria-labelledby="invitation-heading">
   <p class="eyebrow">{lang === 'es' ? 'Contacto' : 'Contact'}</p>
   <h2 id="invitation-heading">{text.heading}</h2>
   <p class="mt-4">{text.text}</p>
