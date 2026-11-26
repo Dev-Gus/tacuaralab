@@ -71,7 +71,7 @@ const formText = contactForm[lang];
   <section class="mt-12" aria-labelledby="message-heading">
     <p class="eyebrow">{lang === 'es' ? 'Contacto' : 'Contact'}</p>
     <h2 id="message-heading">{text.messageHeading}</h2>
-    <ul class="mt-6 list-disc space-y-2 pl-5">
+    <ul class="ruled-list">
       {text.items.map((item) => <li>{item}</li>)}
     </ul>
   </section>
@@ -84,7 +84,7 @@ const formText = contactForm[lang];
     min-width: 0;
     min-height: 3rem;
     border: 1px solid var(--color-muted);
-    border-radius: 0.375rem;
+    border-radius: 0;
     background: var(--color-surface);
     color: var(--color-ink);
     padding: 0.75rem 1rem;

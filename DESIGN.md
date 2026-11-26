@@ -19,7 +19,7 @@ Eyebrows use Muted, the mono stack, 0.75rem type, uppercase and 0.14em tracking.
 
 ## Type scale
 
-All headings use weight 800, -0.035em tracking and line height 0.98–1.05, preserving sentence case. Home H1: `clamp(2.75rem, 9vw, 6rem)`. Other H1s: `clamp(2.5rem, 7vw, 4.5rem)`. H2: `clamp(2rem, 4.5vw, 3.25rem)`. Row and project titles: `clamp(1.5rem, 3vw, 2rem)`. Closing H2s grow to 4rem. Body: fluid 1.0625–1.125rem, line height 1.6. Package prices: 2.5rem, weight 800; list prices remain struck through.
+All headings use weight 800, -0.025em tracking and line height 0.98–1.05, preserving sentence case. Home H1: `clamp(2.75rem, 9vw, 6rem)`. Other H1s: `clamp(2.5rem, 7vw, 4.5rem)`. H2: `clamp(2rem, 4.5vw, 3.25rem)`. Row and project titles: `clamp(1.5rem, 3vw, 2rem)`. Closing H2s grow to 4rem. Body: fluid 1.0625–1.125rem, line height 1.6. Package prices: 2.5rem, weight 800; list prices remain struck through.
 
 ## Sections and rows
 
@@ -27,18 +27,18 @@ Content sections use a 1px Line top rule and `clamp(4rem, 8vw, 7rem)` vertical p
 
 Home benefits, package previews and process use numbered ruled rows: 4rem / 1fr / 1.2fr columns on desktop; number and title above the description on mobile. Numbers are decorative, mono, 0.75rem and Muted. Services process preserves its five complete sentences in an ordered list, with a number beside each sentence. Included/excluded items use unnumbered ruled lists. Extras, payment/ownership/credit and FAQ use label-or-question / text rows on desktop and stack on mobile.
 
-Service packages are open flex columns, with a top rule, no enclosing box, and buttons aligned at the bottom with at least 1.5rem below the last list item. Projects use two open columns with top rules, no card padding or enclosing border, and existing 16:9 thumbnails with square corners and a 1px Line frame. About process retains its three numbered columns at 768px and stacks on mobile.
+Service packages are open flex columns, with a top rule, no enclosing box, and buttons aligned at the bottom with at least 1.5rem below the last list item. Projects use two open columns with top rules, no card padding or enclosing border, and existing 16:9 thumbnails with square corners and a 1px Line frame. About process reuses the numbered sentence rows from Services; both use inherited body size, capped at 1.125rem.
 
 ## Actions and bands
 
 One filled primary action per section or independent service package. Buttons use Bamboo with Paper text, weight 700, square corners, 3.5rem minimum height and 1.75rem horizontal padding. Outline buttons use a 1px Bamboo border and the same dimensions. Text links keep their existing arrows and destinations. Keyboard outlines remain 3px Bamboo with 4px offset.
 
-Home, Services and Projects end in a full-width Bamboo band outside the content container, with content aligned inside the shared container. Text and secondary links use Paper; the inverted button uses Paper with Bamboo text and square corners. Focus outlines in these bands use Paper.
+Home, Services, Projects and About end in a full-width Bamboo band outside the content container, with content aligned inside the shared container. Text and secondary links use Paper; the inverted button uses Paper with Bamboo text and square corners. Focus outlines in these bands use Paper.
 
-No shadows, gradients, animations or transitions. Images have square corners; existing form inputs retain their 6px radius.
+No shadows, gradients, animations or transitions. Images have square corners; form inputs and the textarea have square corners.
 
 ## About portrait and Contact
 
 The original portrait lives at `src/assets/about-gus.jpg`; Astro generates 480w/800w WebP with explicit dimensions. Desktop layout starts at 768px: text left, 400px portrait right aligned with the heading. Mobile order is heading, portrait (max 360px), text. Portrait ratio is 4:5.
 
-Contact details use three ruled rows: WhatsApp, phone, location; labels and values align in columns at 768px. The form uses an open wrapper and a filled submit button; its behavior is unchanged. About, Contact and case studies inherit shared typography, buttons, labels and section spacing without edits to their page components.
+Contact details use three ruled rows: WhatsApp, phone, location; labels and values align in columns at 768px. The form uses an open wrapper and a filled submit button; its behavior is unchanged. About, Contact and case studies inherit shared typography, buttons, labels and section spacing through shared styles. Contact message prompts retain list semantics and use unnumbered ruled rows. Primary buttons stay Bamboo on hover; inverted band buttons stay Paper.

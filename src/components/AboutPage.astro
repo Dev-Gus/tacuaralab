@@ -7,6 +7,7 @@ interface Props { lang: Language; whatsappUrl: string }
 const { lang, whatsappUrl } = Astro.props;
 const text = about[lang];
 ---
+<div class="site-container">
 <div class="about-intro">
   <h1>{text.heading}</h1>
   <Image src={portrait} alt={lang === 'es' ? 'Retrato de Gus, fundador de Tacuara Lab' : 'Portrait of Gus, founder of Tacuara Lab'} widths={[480, 800]} sizes="(min-width: 768px) 400px, (max-width: 391px) calc(100vw - 32px), 360px" width={800} height={1000} format="webp" loading="eager" decoding="async" class="about-photo" />
@@ -14,5 +15,6 @@ const text = about[lang];
 </div>
 <section aria-labelledby="name-heading"><p class="eyebrow">{lang === 'es' ? 'El estudio' : 'The studio'}</p><h2 id="name-heading">{text.nameHeading}</h2><p class="mt-4">{text.name}</p></section>
 <section aria-labelledby="work-heading"><p class="eyebrow">{lang === 'es' ? 'Proceso' : 'Process'}</p><h2 id="work-heading">{text.workHeading}</h2>
-<ol class="numbered-steps mt-8">{text.work.map((item, index) => <li><span class="step-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>)}</ol></section>
-<section><p class="eyebrow">{lang === 'es' ? 'Contacto' : 'Contact'}</p><p>{text.closing}</p><a class="button mt-6" href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.button}</a></section>
+<ol class="process-rows">{text.work.map((item, index) => <li><span class="row-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>)}</ol></section>
+</div>
+<section class="closing-band"><div class="site-container"><p class="eyebrow">{lang === 'es' ? 'Contacto' : 'Contact'}</p><p>{text.closing}</p><a class="button mt-6" href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.button}</a></div></section>
