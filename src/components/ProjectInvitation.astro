@@ -3,14 +3,16 @@ import { whatsappUrl as buildWhatsappUrl } from '../lib/contact';
 import { projects } from '../lib/projects';
 import type { Language } from '../lib/pages';
 
-interface Props { lang: Language }
-const { lang } = Astro.props;
+interface Props { lang: Language; fullBleed?: boolean }
+const { lang, fullBleed = false } = Astro.props;
 const text = projects[lang].invitation;
 const whatsappUrl = buildWhatsappUrl(text.message);
 ---
-<section class="project-invitation mt-8 max-w-3xl" aria-labelledby="invitation-heading">
+<section class:list={['project-invitation', { 'closing-band': fullBleed, 'mt-8 max-w-3xl': !fullBleed }]} aria-labelledby="invitation-heading">
+  <div class:list={{ 'site-container': fullBleed }}>
   <p class="eyebrow">{lang === 'es' ? 'Contacto' : 'Contact'}</p>
   <h2 id="invitation-heading">{text.heading}</h2>
   <p class="mt-4">{text.text}</p>
   <a class="button mt-6" href={whatsappUrl}>{text.button}</a>
+  </div>
 </section>

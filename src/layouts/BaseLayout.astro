@@ -9,6 +9,7 @@ const { lang, page, description, title, localizedPaths, structuredData } = Astro
 const otherLang = lang === 'es' ? 'en' : 'es';
 const text = ui[lang];
 const paths = localizedPaths ?? { es: pageUrl('es', page), en: pageUrl('en', page) };
+const fullWidth = !localizedPaths && (page === 'home' || page === 'services' || page === 'projects');
 ---
 <!doctype html>
 <html lang={lang}>
@@ -20,9 +21,9 @@ const paths = localizedPaths ?? { es: pageUrl('es', page), en: pageUrl('en', pag
   </head>
   <body class="flex min-h-screen flex-col">
     <a class="skip-link" href="#content">{text.skip}</a>
-    <header class="border-b border-line py-3 md:py-6">
-      <div class="site-container flex flex-wrap items-center justify-between gap-x-4 gap-y-2 md:gap-y-4">
-        <a class="inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-xl font-semibold tracking-tight no-underline" href={pageUrl(lang, 'home')}>
+    <header class="site-header border-b border-line">
+      <div class="site-container header-inner">
+        <a class="site-brand inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-xl tracking-tight no-underline" href={pageUrl(lang, 'home')}>
           <svg class="shrink-0" width="18.47" height="28" viewBox="0 -2 62 94" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <g transform="rotate(12 20 45)">
               <rect x="14" y="0" width="12" height="90" rx="6" fill="#2F6048" />
@@ -33,23 +34,23 @@ const paths = localizedPaths ?? { es: pageUrl('es', page), en: pageUrl('en', pag
           </svg>
           Tacuara Lab
         </a>
-        <nav class="w-full lg:w-auto" aria-label={text.navigation}>
-          <ul class="site-nav-list flex gap-0 md:flex-wrap md:gap-1">
+        <nav class="site-navigation" aria-label={text.navigation}>
+          <ul class="site-nav-list">
             {pageIds.map((id) => (
               <li><a class="nav-link" href={pageUrl(lang, id)} aria-current={id === page ? 'page' : undefined}>{pages[lang][id].title}</a></li>
             ))}
-            <li><a
-          class="language-link inline-flex min-h-11 items-center rounded-md border border-bamboo px-2 text-xs md:px-4 md:text-sm font-semibold text-bamboo no-underline hover:bg-bamboo hover:text-white"
+          </ul>
+        </nav>
+        <a
+          class="language-link"
           href={paths[otherLang]}
           lang={otherLang}
           hreflang={otherLang}
           aria-label={text.switchLanguage}
-        >{otherLang === 'es' ? 'Español' : 'English'}</a></li>
-          </ul>
-        </nav>
+        >{otherLang === 'es' ? 'Español' : 'English'}</a>
       </div>
     </header>
-    <main id="content" tabindex="-1" class:list={['site-container flex-1 py-16 sm:py-24', { 'home-main': page === 'home' }]}>
+    <main id="content" tabindex="-1" class:list={['site-main flex-1', { 'site-container': !fullWidth, 'home-main': page === 'home', 'services-main': page === 'services', 'projects-main': page === 'projects' && fullWidth }]}>
       <slot />
     </main>
     <footer class="border-t border-line py-8">

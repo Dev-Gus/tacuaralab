@@ -8,19 +8,21 @@ interface Props { lang: Language }
 const { lang } = Astro.props;
 const text = projects[lang];
 ---
-<div class="max-w-3xl">
+<div class="site-container">
+<div class="page-intro">
   <h1>{text.heading}</h1>
   <p class="mt-6 text-xl text-muted">{text.intro}</p>
 </div>
-<div class="mt-12 grid gap-6 md:grid-cols-2">
+<div class="projects-grid mt-12 grid gap-8 md:grid-cols-2">
   {caseStudies.map((study) => (
     <article class="project-card flex flex-col">
-      <Image src={study.content[lang].cover.src} width={800} height={450} widths={[320, 480, 800]} sizes="(min-width: 1152px) 436px, (min-width: 768px) calc((100vw - 160px) / 2), calc(100vw - 80px)" format="webp" quality={75} loading="lazy" decoding="async" alt={study.content[lang].cover.alt} class="mb-6 aspect-video h-auto w-full shrink-0 rounded-card border border-line object-cover" />
-      <p class="mb-6 text-sm font-semibold uppercase tracking-widest text-bamboo">{study.content[lang].cardLabel}</p>
-      <h2>{study.content[lang].heading}</h2>
+      <Image src={study.content[lang].cover.src} width={800} height={450} widths={[320, 480, 800]} sizes="(min-width: 1152px) 528px, (min-width: 768px) calc((100vw - 96px) / 2), (min-width: 640px) calc(100vw - 64px), calc(100vw - 32px)" format="webp" quality={75} loading="lazy" decoding="async" alt={study.content[lang].cover.alt} class="mb-6 aspect-video h-auto w-full shrink-0 border border-line object-cover" />
+      <p class="eyebrow">{study.content[lang].cardLabel}</p>
+      <h2 class="project-title">{study.content[lang].heading}</h2>
       <p class="mt-4 text-muted">{study.content[lang].summary}</p>
       <a class="text-link mt-4" href={caseStudyUrl(lang, study)}>{text.link}</a>
     </article>
   ))}
 </div>
-<ProjectInvitation lang={lang} />
+</div>
+<ProjectInvitation lang={lang} fullBleed />
